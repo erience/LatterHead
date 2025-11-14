@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A4 Letterhead Editable</title>
+
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            margin: 0;
+            background: #f3f3f3;
+            font-family: Arial, sans-serif;
+        }
+
+        .toolbar {
+            background: #fff;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .toolbar button,
+        .toolbar a {
+            padding: 8px 15px;
+            cursor: pointer;
+            border: none;
+            color: white;
+            border-radius: 4px;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .btn-save {
+            background: #28a745;
+        }
+
+        .btn-print {
+            background: #000;
+        }
+
+        .btn-back {
+            background: #6c757d;
+        }
+
+        .btn-align {
+            color: white;
+            background: #555;
+            border: 1px solid black;
+            border-radius: 4px;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            background: #fff;
+            margin: 20px auto;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0, 0, 0, .2);
+        }
+
+        /* TOP IMAGE */
+        .top-image {
+            width: 100%;
+            height: 120px;
+            background: url('top-design.png') no-repeat center;
+            background-size: cover;
+        }
+
+        /* MAIN BODY */
+        .content-area {
+            padding: 20mm 20mm 15mm 20mm;
+        }
+
+        .logo-block {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .logo-block img {
+            width: 60px;
+            height: auto;
+        }
+
+        .logo-text h2 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        .logo-text p {
+            margin: 0;
+            color: #555;
+            letter-spacing: 1px;
+            font-size: 12px;
+        }
+
+        .info-block {
+            line-height: 1.5;
+            margin-top: 15px;
+        }
+
+        .info-block p {
+            margin: 0;
+            font-size: 13px;
+        }
+
+        .date {
+            text-align: right;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .letter-body p {
+            font-size: 14px;
+            text-align: justify;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .signature-block {
+            margin-top: 40px;
+        }
+
+        .signature-block .sign {
+            font-family: "Brush Script MT", cursive;
+            font-size: 30px;
+            margin-bottom: 5px;
+        }
+
+        /* FOOTER IMAGE */
+        .bottom-image {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 140px;
+            background: url('bottom-design.png') no-repeat center;
+            background-size: cover;
+        }
+
+        .footer-info {
+            position: absolute;
+            bottom: 15px;
+            right: 20mm;
+            text-align: left;
+            font-size: 13px;
+            color: #333;
+        }
+
+        @media print {
+            .toolbar {
+                display: none;
+            }
+
+            body {
+                background: #fff;
+            }
+
+            .page {
+                margin: 0;
+                box-shadow: none;
+            }
+        }
+
+        [contenteditable="true"]:focus {
+            outline: 1px dashed #007bff;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+        <a href="index.html" class="btn-back">Back</a>
+
+        <div>
+            <button class="btn-align" onclick="setAlign('left')">Left</button>
+            <button class="btn-align" onclick="setAlign('center')">Center</button>
+            <button class="btn-align" onclick="setAlign('right')">Right</button>
+        </div>
+
+        <div>
+            <button class="btn-save" onclick="saveEdits()">Save</button>
+            <button class="btn-print" onclick="window.print()">Print</button>
+        </div>
+    </div>
+
+    <div class="page">
+
+        <!-- Top header image -->
+        <div class="top-image"></div>
+
+        <div class="content-area">
+
+            <!-- Logo + Text -->
+            <div class="logo-block">
+                <img src="logo.png" alt="Logo">
+                <div class="logo-text">
+                    <h2 contenteditable="true" id="title">Dream Studio</h2>
+                    <p contenteditable="true" id="subtitle">VISUAL ART & DESIGN</p>
+                </div>
+            </div>
+
+            <!-- Contact left -->
+            <div class="info-block">
+                <p contenteditable="true" id="contact_name"><strong>James Doe</strong></p>
+                <p contenteditable="true" id="contact_role">Chief Director</p>
+                <p contenteditable="true" id="contact_address">A: 45/1 Anson Road Singapore - 8899</p>
+                <p contenteditable="true" id="contact_email">W: email@mail.com, www.myweb.com</p>
+                <p contenteditable="true" id="contact_phone">P: +880 - 12345 - 6789</p>
+            </div>
+
+            <!-- Date on right -->
+            <p class="date" contenteditable="true" id="date_field">Date: 10 September, 2019</p>
+
+            <!-- Letter content -->
+            <div class="letter-body">
+                <p contenteditable="true" id="p1">
+                    This is a sample letter that has been placed to demonstrate typing for your company letterhead
+                    design.
+                </p>
+                <p contenteditable="true" id="p2">
+                    This letterhead design is meant to project an image of professionalism and reliability.
+                </p>
+                <p contenteditable="true" id="p3">
+                    When positioned properly, it will work in harmony with all other elements in your branding system.
+                </p>
+            </div>
+
+            <!-- Signature -->
+            <div class="signature-block">
+                <div class="sign" contenteditable="true" id="sign">John Smeeth</div>
+                <p contenteditable="true" id="sign_role">Manager</p>
+            </div>
+        </div>
+
+        <!-- Footer image -->
+        <div class="bottom-image"></div>
+
+        <!-- Footer text -->
+        <div class="footer-info">
+            <p contenteditable="true" id="f1">+000 12345 6789</p>
+            <p contenteditable="true" id="f2">+000 12345 6789</p>
+            <p contenteditable="true" id="f3">www.website.com</p>
+            <p contenteditable="true" id="f4">username@email.com</p>
+            <p contenteditable="true" id="f5">Street Address Here, Singapore 2222</p>
+        </div>
+
+    </div>
+
+    <script>
+        const ids = [
+            "title", "subtitle", "contact_name", "contact_role", "contact_address",
+            "contact_email", "contact_phone", "date_field", "p1", "p2", "p3",
+            "sign", "sign_role", "f1", "f2", "f3", "f4", "f5"
+        ];
+
+        window.onload = () => {
+            ids.forEach(id => {
+                const saved = localStorage.getItem(id);
+                if (saved) {
+                    document.getElementById(id).innerHTML = saved;
+                }
+            });
+        };
+
+        function saveEdits() {
+            ids.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) localStorage.setItem(id, el.innerHTML);
+            });
+            alert("Saved");
+        }
+
+        function setAlign(value) {
+            const s = window.getSelection();
+            if (!s.rangeCount) return;
+            let node = s.anchorNode;
+            while (node && node.nodeType === 3) node = node.parentNode;
+            while (node && !node.getAttribute("contenteditable")) node = node.parentElement;
+            if (node) node.style.textAlign = value;
+        }
+    </script>
+
+</body>
+
+</html>
