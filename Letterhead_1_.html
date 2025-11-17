@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A4 Letterhead Editable - Elegant Curved Design</title>
+
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            margin: 0;
+            background: #f3f3f3;
+            font-family: 'Georgia', serif;
+        }
+
+        .toolbar {
+            background: #fff;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            justify-content: space-between;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .toolbar button,
+        .toolbar a {
+            padding: 8px 15px;
+            cursor: pointer;
+            border: none;
+            color: white;
+            border-radius: 4px;
+            font-size: 14px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-save {
+            background: #28a745;
+        }
+
+        .btn-print {
+            background: #000;
+        }
+
+        .btn-back {
+            background: #6c757d;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            background: #f5f3f0;
+            margin: 20px auto;
+            box-sizing: border-box;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Top curved design */
+        .top-design {
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 800px;
+            height: 400px;
+        }
+
+        .curve-teal {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: #1a6b6b;
+            border-radius: 0 0 0 50%;
+        }
+
+        .curve-yellow {
+            position: absolute;
+            top: 50px;
+            right: 50px;
+            width: 90%;
+            height: 90%;
+            background: #f4c430;
+            border-radius: 0 0 0 50%;
+        }
+
+        .curve-gray {
+            position: absolute;
+            top: 90px;
+            right: 90px;
+            width: 85%;
+            height: 85%;
+            background: #d4d2ce;
+            border-radius: 0 0 0 50%;
+        }
+
+        .curve-white {
+            position: absolute;
+            top: 120px;
+            right: 120px;
+            width: 80%;
+            height: 80%;
+            background: #f5f3f0;
+            border-radius: 0 0 0 50%;
+        }
+
+        /* Bottom curved design */
+        .bottom-design {
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 900px;
+            height: 500px;
+        }
+
+        .bottom-curve-teal {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #1a6b6b;
+            border-radius: 0 50% 0 0;
+        }
+
+        .bottom-curve-yellow {
+            position: absolute;
+            bottom: 50px;
+            left: 50px;
+            width: 90%;
+            height: 90%;
+            background: #f4c430;
+            border-radius: 0 50% 0 0;
+        }
+
+        .bottom-curve-gray {
+            position: absolute;
+            bottom: 90px;
+            left: 90px;
+            width: 85%;
+            height: 85%;
+            background: #d4d2ce;
+            border-radius: 0 50% 0 0;
+        }
+
+        .container {
+            padding: 150px 80px 200px 100px;
+            position: relative;
+            z-index: 10;
+        }
+
+        [contenteditable="true"] {
+            outline: 1px dashed transparent;
+            transition: 0.2s;
+        }
+
+        [contenteditable="true"]:hover {
+            outline: 1px dashed #aaa;
+        }
+
+        [contenteditable="true"]:focus {
+            outline: 1px dashed #f4c430;
+        }
+
+        .header {
+            margin-bottom: 60px;
+        }
+
+        .header h1 {
+            font-size: 42px;
+            font-weight: 400;
+            color: #333;
+            margin: 0 0 5px 0;
+            letter-spacing: -0.5px;
+        }
+
+        .header .title {
+            font-size: 15px;
+            color: #999;
+            letter-spacing: 1px;
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            margin: 0;
+        }
+
+        .content {
+            max-width: 600px;
+        }
+
+        .content p {
+            text-align: justify;
+            margin-bottom: 22px;
+            font-size: 13px;
+            color: #666;
+            line-height: 1.9;
+            font-family: 'Georgia', serif;
+        }
+
+        .signature-section {
+            margin-top: 80px;
+        }
+
+        .signature {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 42px;
+            margin-bottom: 0;
+            color: #333;
+        }
+
+        .signature-line {
+            width: 200px;
+            height: 2px;
+            background: #333;
+            margin: 10px 0 15px 0;
+        }
+
+        .signature-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin: 0;
+        }
+
+        .signature-title {
+            font-size: 13px;
+            color: #999;
+            font-style: italic;
+            margin: 3px 0 0 0;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 80px;
+            left: 100px;
+            right: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            z-index: 15;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .contact-info {
+            text-align: right;
+            font-size: 11px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .contact-info p {
+            margin: 3px 0;
+        }
+
+        .contact-left {
+            text-align: left;
+        }
+
+        @media print {
+            .toolbar {
+                display: none;
+            }
+
+            body {
+                background: #fff !important;
+            }
+
+            .page {
+                margin: 0;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+        <div>
+            <!-- <a href="index.html" class="btn-back">Back</a> -->
+        </div>
+        <div>
+            <button class="btn-save" onclick="saveEdits()">Save</button>
+            <button class="btn-print" onclick="window.print()">Print</button>
+        </div>
+    </div>
+
+    <!-- Page 1 -->
+    <div class="page">
+        <div class="top-design">
+            <div class="curve-teal"></div>
+            <div class="curve-yellow"></div>
+            <div class="curve-gray"></div>
+            <div class="curve-white"></div>
+        </div>
+        <div class="bottom-design">
+            <div class="bottom-curve-teal"></div>
+            <div class="bottom-curve-yellow"></div>
+            <div class="bottom-curve-gray"></div>
+        </div>
+
+        <div class="container">
+            <div class="header">
+                <h1 contenteditable="true" id="name">Andrew Wilson</h1>
+                <p class="title" contenteditable="true" id="title">Senior Executive</p>
+            </div>
+
+            <div class="content">
+                <p contenteditable="true" id="p1">
+                    I am pleased to introduce our newly designed letterhead.
+                </p>
+                <p contenteditable="true" id="p2">
+                    Crafted to reflect the essence of professionalism and reliability synonymous with [Your Company].
+                    Our aim was to create a design that not only embodies our brand identity but also provides a sense
+                    of openness and clarity.
+                </p>
+                <p contenteditable="true" id="p3">
+                    At the heart of this design is simplicity. Through clean lines and thoughtful alignment, we have
+                    cultivated a spacious layout that exudes strength and sophistication. This deliberate simplicity not
+                    only enhances the aesthetics of our correspondence but also reinforces the integrity of the [Your
+                    Company] brand.
+                </p>
+                <p contenteditable="true" id="p4">
+                    Inspired by the form of our logo, each element of this letterhead is meticulously crafted to
+                    harmonize with our visual identity. The result is a cohesive stationery ensemble that speaks volumes
+                    about our commitment to excellence. Thank you for your attention to this matter. Should you have any
+                    questions or feedback, please do not hesitate to contact us. Thank you for your attention to this
+                    matter. Should you have any questions or feedback, please do not hesitate to contact us.
+                </p>
+                <p contenteditable="true" id="p5">
+                    Thank you for your attention to this matter. Should you have any questions or feedback, please do
+                    not hesitate to contact us.
+                </p>
+            </div>
+
+            <div class="signature-section">
+                <p class="signature" contenteditable="true" id="signature">andrew wilson</p>
+                <div class="signature-line"></div>
+                <p class="signature-name" contenteditable="true" id="sign_name">Andrew Wilson</p>
+                <p class="signature-title" contenteditable="true" id="sign_title">Senior Executive</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="social-icons">
+                <div class="social-icon">f</div>
+                <div class="social-icon">in</div>
+                <div class="social-icon">t</div>
+            </div>
+            <div class="contact-info contact-left">
+                <p contenteditable="true" id="address">4/A Rosewood</p>
+                <p contenteditable="true" id="phone">12 345 678 910</p>
+            </div>
+            <div class="contact-info">
+                <p contenteditable="true" id="website">WWW.YOURWEBSITE.COM</p>
+                <p contenteditable="true" id="email">YOUREAMIL@EMAIL.COM</p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        // In-memory storage for edits
+        const savedData = {};
+
+        const ids = [
+            "name", "title", "p1", "p2", "p3", "p4", "p5",
+            "signature", "sign_name", "sign_title",
+            "address", "phone", "website", "email",
+            "name2", "title2", "p21", "p22", "p23", "p24",
+            "signature2", "sign_name2", "sign_title2",
+            "address2", "phone2", "website2", "email2"
+        ];
+
+        window.onload = () => {
+            ids.forEach(id => {
+                const saved = savedData[id];
+                if (saved !== undefined) {
+                    const el = document.getElementById(id);
+                    if (el) el.innerHTML = saved;
+                }
+            });
+        };
+
+        function saveEdits() {
+            ids.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) savedData[id] = el.innerHTML;
+            });
+            alert("Saved successfully!");
+        }
+    </script>
+
+</body>
+
+</html>

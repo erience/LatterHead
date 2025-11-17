@@ -27,13 +27,11 @@
             top: 0;
             z-index: 999;
             justify-content: space-between;
-            /* bootstrap-like utilities */
             display: flex;
             gap: 10px;
             align-items: center;
         }
 
-        /* Button base */
         .toolbar button,
         .toolbar a {
             padding: 8px 15px;
@@ -56,6 +54,13 @@
 
         .btn-back {
             background: #6c757d;
+        }
+
+        .btn-align {
+
+            border-radius: 5px;
+            border: 1px solid black;
+            background-color: rgb(99, 98, 98);
         }
 
         .page {
@@ -177,22 +182,28 @@
 <body>
 
     <!-- Toolbar -->
-    <div class="toolbar d-flex gap-2 align-items-center ">
+    <div class="toolbar">
         <div>
-
-            <a href="index.html" class="btn-back">Back</a>
+            <!-- <a href="index.html" class="btn-back">Back</a> -->
         </div>
-        <div>
 
+        <!-- Alignment Buttons -->
+        <div>
+            <button class="btn-align " onclick="setAlign('left')">Left</button>
+            <button class="btn-align" onclick="setAlign('center')">Center</button>
+            <button class="btn-align" onclick="setAlign('right')">Right</button>
+            <button class="btn-align" onclick="setAlign('end')">End</button>
+        </div>
+
+        <div>
             <button class="btn-save" onclick="saveEdits()">Save</button>
             <button class="btn-print" onclick="window.print()">Print</button>
         </div>
     </div>
 
-    <!-- Page -->
-    <div class="page" id="page">
+    <!-- Page 1 -->
+    <div class="page">
         <div class="top-bar"></div>
-
         <div class="container">
 
             <div class="logo-block">
@@ -210,21 +221,17 @@
                 <p contenteditable="true" id="r_phone">123-456-789</p>
             </section>
 
-            <section class="date" contenteditable="true" id="date">
-                Friday, 01/02/2028
-            </section>
+            <section class="date" contenteditable="true" id="date">Friday, 01/02/2028</section>
 
             <section class="content">
                 <p contenteditable="true" id="p1">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque facilisis nibh id tellus
                     tincidunt, vitae faucibus nibh tincidunt.
                 </p>
-
                 <p contenteditable="true" id="p2">
                     Curabitur non nisi eget tellus maximus fermentum. Cras semper nunc in urna lacinia, in interdum quam
                     placerat.
                 </p>
-
                 <p contenteditable="true" id="p3">
                     Etiam nec magna ut ipsum vehicula tincidunt. In eget mi. Mauris at elit erat quis.
                 </p>
@@ -250,95 +257,104 @@
                 <p contenteditable="true" id="f6">Fairbanks, AK 99701</p>
             </div>
         </footer>
-
     </div>
 
-    <!-- Page 2-->
-    <div class="page" id="page">
+    <!-- Page 2 (same structure) -->
+    <div class="page">
         <div class="top-bar"></div>
-
         <div class="container">
 
             <div class="logo-block">
                 <div class="logo-text">
-                    <h2 contenteditable="true" id="title">Dream Studio</h2>
-                    <p contenteditable="true" id="subtitle">VISUAL ART & DESIGN</p>
+                    <h2 contenteditable="true" id="title2">Dream Studio</h2>
+                    <p contenteditable="true" id="subtitle2">VISUAL ART & DESIGN</p>
                 </div>
             </div>
 
             <section class="recipient">
-                <p class="name" contenteditable="true" id="r_name">Mark Jokowow</p>
-                <p contenteditable="true" id="r_role">Director</p>
-                <p contenteditable="true" id="r_company">West media sponsor, USA 568</p>
-                <p contenteditable="true" id="r_email">email@example.com | www.yoursite.com</p>
-                <p contenteditable="true" id="r_phone">123-456-789</p>
+                <p class="name" contenteditable="true" id="r_name2">Mark Jokowow</p>
+                <p contenteditable="true" id="r_role2">Director</p>
+                <p contenteditable="true" id="r_company2">West media sponsor, USA 568</p>
+                <p contenteditable="true" id="r_email2">email@example.com | www.yoursite.com</p>
+                <p contenteditable="true" id="r_phone2">123-456-789</p>
             </section>
 
-            <section class="date" contenteditable="true" id="date">
-                Friday, 01/02/2028
-            </section>
+            <section class="date" contenteditable="true" id="date2">Friday, 01/02/2028</section>
 
             <section class="content">
-                <p contenteditable="true" id="p1">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque facilisis nibh id tellus
-                    tincidunt, vitae faucibus nibh tincidunt.
+                <p contenteditable="true" id="p21">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </p>
-
-                <p contenteditable="true" id="p2">
-                    Curabitur non nisi eget tellus maximus fermentum. Cras semper nunc in urna lacinia, in interdum quam
-                    placerat.
+                <p contenteditable="true" id="p22">
+                    Curabitur non nisi eget tellus maximus fermentum.
                 </p>
-
-                <p contenteditable="true" id="p3">
-                    Etiam nec magna ut ipsum vehicula tincidunt. In eget mi. Mauris at elit erat quis.
+                <p contenteditable="true" id="p23">
+                    Etiam nec magna ut ipsum vehicula tincidunt.
                 </p>
             </section>
 
             <section class="signature">
-                <p class="sign" contenteditable="true" id="sign">John Watson</p>
-                <p contenteditable="true" id="sign_role">Managing Director</p>
+                <p class="sign" contenteditable="true" id="sign2">John Watson</p>
+                <p contenteditable="true" id="sign_role2">Managing Director</p>
             </section>
         </div>
 
         <footer class="footer-bar">
             <div class="footer-col">
-                <p contenteditable="true" id="f1">012.345.6780</p>
-                <p contenteditable="true" id="f2">012.345.6780</p>
+                <p contenteditable="true" id="ff1">012.345.6780</p>
+                <p contenteditable="true" id="ff2">012.345.6780</p>
             </div>
             <div class="footer-col">
-                <p contenteditable="true" id="f3">info@websiteurl.com</p>
-                <p contenteditable="true" id="f4">name@websiteurl.com</p>
+                <p contenteditable="true" id="ff3">info@websiteurl.com</p>
+                <p contenteditable="true" id="ff4">name@websiteurl.com</p>
             </div>
             <div class="footer-col">
-                <p contenteditable="true" id="f5">3222 Blackwell Street</p>
-                <p contenteditable="true" id="f6">Fairbanks, AK 99701</p>
+                <p contenteditable="true" id="ff5">3222 Blackwell Street</p>
+                <p contenteditable="true" id="ff6">Fairbanks, AK 99701</p>
             </div>
         </footer>
-
     </div>
-
 
     <script>
         const ids = [
             "title", "subtitle", "r_name", "r_role", "r_company", "r_email", "r_phone",
-            "date", "p1", "p2", "p3", "sign", "sign_role", "f1", "f2", "f3", "f4", "f5", "f6"
+            "date", "p1", "p2", "p3", "sign", "sign_role", "f1", "f2", "f3", "f4", "f5", "f6",
+            "title2", "subtitle2", "r_name2", "r_role2", "r_company2", "r_email2", "r_phone2",
+            "date2", "p21", "p22", "p23", "sign2", "sign_role2",
+            "ff1", "ff2", "ff3", "ff4", "ff5", "ff6"
         ];
 
         window.onload = () => {
             ids.forEach(id => {
                 const saved = localStorage.getItem(id);
                 if (saved !== null) {
-                    document.getElementById(id).innerHTML = saved;
+                    const el = document.getElementById(id);
+                    if (el) el.innerHTML = saved;
                 }
             });
         };
 
         function saveEdits() {
             ids.forEach(id => {
-                const value = document.getElementById(id).innerHTML;
-                localStorage.setItem(id, value);
+                const el = document.getElementById(id);
+                if (el) localStorage.setItem(id, el.innerHTML);
             });
             alert("Saved");
+        }
+
+        function setAlign(value) {
+            const selection = window.getSelection();
+            if (!selection.rangeCount) return;
+
+            let node = selection.anchorNode;
+
+            while (node && node.nodeType === 3) node = node.parentNode;
+
+            while (node && !node.getAttribute("contenteditable")) {
+                node = node.parentElement;
+            }
+
+            if (node) node.style.textAlign = value;
         }
     </script>
 

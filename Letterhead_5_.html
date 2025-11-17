@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blue Triangles Letterhead</title>
+
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            margin: 0;
+            background: #e9ecef;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Toolbar */
+        .toolbar {
+            background: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        }
+
+        .toolbar a,
+        .toolbar button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-back {
+            background: #6c757d;
+        }
+
+        .btn-save {
+            background: #28a745;
+        }
+
+        .btn-print {
+            background: #000;
+        }
+
+        /* PAGE */
+        .page {
+            width: 210mm;
+            height: 297mm;
+            margin: 20px auto;
+            background: #fff;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+        }
+
+        /* HEADER TRIANGLES */
+        .header-triangles {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 420px;
+            height: 220px;
+        }
+
+        .tri1 {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 260px;
+            height: 170px;
+            background: #0e3f7c;
+            clip-path: polygon(100% 0, 0 0, 100% 100%);
+        }
+
+        .tri2 {
+            position: absolute;
+            top: 45px;
+            right: 40px;
+            width: 240px;
+            height: 150px;
+            background: #1d6bc6;
+            clip-path: polygon(100% 0, 0 0, 100% 100%);
+        }
+
+        .tri3 {
+            position: absolute;
+            top: 90px;
+            right: 80px;
+            width: 210px;
+            height: 130px;
+            background: #0b2b55;
+            clip-path: polygon(100% 0, 0 0, 100% 100%);
+        }
+
+        /* CONTENT AREA */
+        .content-area {
+            padding: 120px 80px 180px 80px;
+            position: relative;
+            z-index: 12;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 32px;
+            font-weight: bold;
+            color: #0e3f7c;
+        }
+
+        .job-title {
+            font-size: 15px;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            margin: 3px 0;
+            color: #444;
+            font-size: 13px;
+        }
+
+        .date {
+            text-align: right;
+            margin-top: -70px;
+            font-size: 13px;
+            color: #333;
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 1.8;
+            text-align: justify;
+            color: #444;
+        }
+
+        [contenteditable="true"] {
+            outline: 1px dashed transparent;
+        }
+
+        [contenteditable="true"]:hover {
+            outline: 1px dashed #999;
+        }
+
+        [contenteditable="true"]:focus {
+            outline: 1px dashed #1d6bc6;
+        }
+
+        /* Signature */
+        .signature-block {
+            margin-top: 40px;
+        }
+
+        .signature {
+            font-family: "Brush Script MT", cursive;
+            font-size: 38px;
+            color: #222;
+        }
+
+        .sig-name {
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .sig-title {
+            font-size: 13px;
+            color: #777;
+        }
+
+        /* FOOTER TRIANGLES */
+        .footer-triangles {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 400px;
+            height: 200px;
+        }
+
+        .ftri1 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 230px;
+            height: 150px;
+            background: #0e3f7c;
+            clip-path: polygon(0 100%, 100% 100%, 0 0);
+        }
+
+        .ftri2 {
+            position: absolute;
+            bottom: 30px;
+            left: 40px;
+            width: 210px;
+            height: 130px;
+            background: #1d6bc6;
+            clip-path: polygon(0 100%, 100% 100%, 0 0);
+        }
+
+        .ftri3 {
+            position: absolute;
+            bottom: 60px;
+            left: 80px;
+            width: 180px;
+            height: 110px;
+            background: #0b2b55;
+            clip-path: polygon(0 100%, 100% 100%, 0 0);
+        }
+
+        /* FOOTER CONTACT */
+        .footer-contact {
+            position: absolute;
+            bottom: 40px;
+            right: 80px;
+            font-size: 13px;
+            color: #0e3f7c;
+            text-align: right;
+        }
+
+        .footer-contact p {
+            margin: 4px 0;
+        }
+
+        @media print {
+            .toolbar {
+                display: none;
+            }
+
+            .page {
+                box-shadow: none;
+                margin: 0;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+        <!-- <a href="index.html" class="btn-back">Back</a> -->
+
+        <div>
+            <button class="btn-save" onclick="saveEdits()">Save</button>
+            <button class="btn-print" onclick="window.print()">Print</button>
+        </div>
+    </div>
+
+    <!-- Page -->
+    <div class="page">
+
+        <!-- TOP TRIANGLES -->
+        <div class="header-triangles">
+            <div class="tri1"></div>
+            <div class="tri2"></div>
+            <div class="tri3"></div>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="content-area">
+
+            <h1 contenteditable="true" id="name">Mr. John Smith</h1>
+            <p class="job-title" contenteditable="true" id="job">Marketing Manager</p>
+
+            <div class="contact">
+                <p contenteditable="true" id="address">Street Name, City, Country</p>
+                <p contenteditable="true" id="email">email@example.com</p>
+                <p contenteditable="true" id="phone">+123 456 789</p>
+            </div>
+
+            <p class="date" contenteditable="true" id="date">Date: 12 January 2024</p>
+
+            <p contenteditable="true" id="p1">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+            </p>
+            <p contenteditable="true" id="p2">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+            </p>
+            <p contenteditable="true" id="p3">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+            </p>
+
+            <!-- Signature -->
+            <div class="signature-block">
+                <p class="signature" contenteditable="true" id="signature">Signature</p>
+                <p class="sig-name" contenteditable="true" id="sig_name">John Smith</p>
+                <p class="sig-title" contenteditable="true" id="sig_title">Director</p>
+            </div>
+
+        </div>
+
+        <!-- FOOTER TRIANGLES -->
+        <div class="footer-triangles">
+            <div class="ftri1"></div>
+            <div class="ftri2"></div>
+            <div class="ftri3"></div>
+        </div>
+
+        <!-- FOOTER CONTACT -->
+        <div class="footer-contact">
+            <p contenteditable="true" id="f1">yourwebsite.com</p>
+            <p contenteditable="true" id="f2">your@email.com</p>
+            <p contenteditable="true" id="f3">+123 456 789</p>
+        </div>
+
+    </div>
+
+    <!-- JS SAVE SYSTEM -->
+    <script>
+        const editable = [
+            "name", "job", "address", "email", "phone", "date",
+            "p1", "p2", "p3", "signature", "sig_name", "sig_title",
+            "f1", "f2", "f3"
+        ];
+
+        let saved = {};
+
+        function saveEdits() {
+            editable.forEach(id => {
+                const el = document.getElementById(id);
+                saved[id] = el.innerHTML;
+            });
+            alert("Saved!");
+        }
+    </script>
+
+</body>
+
+</html>

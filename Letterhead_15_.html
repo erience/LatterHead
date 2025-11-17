@@ -1,0 +1,119 @@
+<!-- Design 14: Top-Left Circles & Clean Lines -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Letterhead Design 14</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2.5cm;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f9f9fb;
+            margin: 0;
+        }
+
+        .container {
+            width: 210mm;
+            height: 297mm;
+            margin: auto;
+            background: #fff;
+            border: 1.5px solid #dde2e7;
+        }
+
+        .circles {
+            position: absolute;
+            top: 26px;
+            left: 22px;
+        }
+
+        .circle1,
+        .circle2 {
+            display: inline-block;
+            border-radius: 50%;
+            margin-right: 3px;
+        }
+
+        .circle1 {
+            width: 16px;
+            height: 16px;
+            background: #5352ed;
+        }
+
+        .circle2 {
+            width: 10px;
+            height: 10px;
+            background: #70a1ff;
+        }
+
+        .header {
+            padding: 38px 42px 12px 50px;
+        }
+
+        .logo {
+            font-size: 21px;
+            color: #5352ed;
+            font-weight: bold;
+        }
+
+        .company {
+            font-size: 15px;
+            color: #2f3640;
+        }
+
+        .tagline {
+            font-size: 12px;
+            color: #70a1ff;
+        }
+
+        .contact {
+            font-size: 12px;
+            color: #353b48;
+            margin-top: 7px;
+        }
+
+        .content {
+            padding: 24px 42px 16px 50px;
+            min-height: 170mm;
+        }
+
+        .footer {
+            border-top: 1px solid #666a7a;
+            font-size: 12px;
+            color: #666a7a;
+            padding: 17px 42px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .container {
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="circles">
+            <span class="circle1"></span>
+            <span class="circle2"></span>
+        </div>
+        <div class="header">
+            <span class="logo">Your Logo</span><br>
+            <span class="company">Law Firm Name</span><br>
+            <span class="tagline">Expert Legal Counsel</span>
+            <div class="contact">case@lawfirm.com | +91-82772 11122</div>
+        </div>
+        <div class="content"></div>
+        <div class="footer">
+            <span>17 Legal Lane, Lucknow</span>
+            <span>lawfirm.com</span>
+        </div>
+    </div>
+</body>
+
+</html>

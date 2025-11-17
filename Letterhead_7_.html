@@ -1,0 +1,422 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Letterhead</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            line-height: 1.5;
+            background-color: #fff;
+            padding: 0;
+            margin: 0;
+        }
+
+        .letterhead {
+            max-width: 8.5in;
+            min-height: 11in;
+            margin: 0 auto;
+            padding: 0.75in;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Header section with geometric shapes */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #2c7fb8 0%, #1a5f8a 100%);
+            border-radius: 10px;
+            margin-right: 15px;
+            position: relative;
+        }
+
+        .logo::before {
+            content: "";
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: white;
+            border-radius: 50%;
+            top: 10px;
+            left: 10px;
+        }
+
+        .logo::after {
+            content: "";
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: #2c7fb8;
+            border-radius: 50%;
+            top: 17px;
+            left: 17px;
+        }
+
+        .hospital-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a5f8a;
+            letter-spacing: 0.5px;
+        }
+
+        .geometric-shapes {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 180px;
+            height: 180px;
+        }
+
+        .shape-1 {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #2c7fb8 0%, #1a5f8a 100%);
+            border-radius: 20px;
+            top: 0;
+            right: 0;
+            transform: rotate(15deg);
+        }
+
+        .shape-2 {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #3aa9b9 0%, #2c7fb8 100%);
+            border-radius: 15px;
+            top: 30px;
+            right: 30px;
+            transform: rotate(-10deg);
+        }
+
+        .shape-3 {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #4fd1c5 0%, #3aa9b9 100%);
+            border-radius: 10px;
+            top: 50px;
+            right: 50px;
+            transform: rotate(5deg);
+        }
+
+        /* Contact information section */
+        .contact-info {
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .contact-details {
+            flex: 1;
+        }
+
+        .name {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #1a5f8a;
+        }
+
+        .title {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .contact-line {
+            display: flex;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .contact-label {
+            font-weight: 600;
+            width: 25px;
+            color: #1a5f8a;
+        }
+
+        .contact-value {
+            color: #555;
+        }
+
+        .date {
+            font-size: 14px;
+            color: #555;
+            text-align: right;
+            margin-top: 25px;
+        }
+
+        /* Body content */
+        .body-content {
+            margin-bottom: 60px;
+            text-align: justify;
+        }
+
+        .paragraph {
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Signature section */
+        .signature-section {
+            margin-bottom: 60px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #1a5f8a;
+        }
+
+        .printed-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 3px;
+            color: #333;
+        }
+
+        .signature-title {
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* Footer section */
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            position: relative;
+            margin-top: 40px;
+        }
+
+        .footer-shapes {
+            position: absolute;
+            bottom: -10px;
+            left: -20px;
+            width: 120px;
+            height: 120px;
+        }
+
+        .footer-shape-1 {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #2c7fb8 0%, #1a5f8a 100%);
+            border-radius: 15px;
+            bottom: 0;
+            left: 0;
+            transform: rotate(-15deg);
+        }
+
+        .footer-shape-2 {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #3aa9b9 0%, #2c7fb8 100%);
+            border-radius: 10px;
+            bottom: 20px;
+            left: 20px;
+            transform: rotate(10deg);
+        }
+
+        .footer-shape-3 {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #4fd1c5 0%, #3aa9b9 100%);
+            border-radius: 8px;
+            bottom: 40px;
+            left: 40px;
+            transform: rotate(-5deg);
+        }
+
+        .footer-contact {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            width: 100%;
+        }
+
+        .footer-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .footer-icon {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+            background-color: #1a5f8a;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .footer-icon::before {
+            content: "";
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: white;
+            border-radius: 50%;
+            top: 4px;
+            left: 4px;
+        }
+
+        .footer-link {
+            color: #1a5f8a;
+            text-decoration: none;
+        }
+
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Divider line */
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent 0%, #1a5f8a 50%, transparent 100%);
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="letterhead">
+        <!-- Header with logo and geometric shapes -->
+        <div class="header">
+            <div class="logo-container">
+                <div class="logo"></div>
+                <div class="hospital-name">Hospital Name</div>
+            </div>
+            <div class="geometric-shapes">
+                <div class="shape-1"></div>
+                <div class="shape-2"></div>
+                <div class="shape-3"></div>
+            </div>
+        </div>
+
+        <!-- Contact information -->
+        <div class="contact-info">
+            <div class="contact-details">
+                <div class="name">Smith Werbend</div>
+                <div class="title">Chief Director</div>
+                <div class="contact-line">
+                    <span class="contact-label">A :</span>
+                    <span class="contact-value">45, Lorem Road US - 8989</span>
+                </div>
+                <div class="contact-line">
+                    <span class="contact-label">W :</span>
+                    <span class="contact-value">email@Hospital.com, www.website.com</span>
+                </div>
+                <div class="contact-line">
+                    <span class="contact-label">P :</span>
+                    <span class="contact-value">+880 - 12345 - 6789</span>
+                </div>
+            </div>
+            <div class="date">Date, 12 January, 2030</div>
+        </div>
+
+        <!-- Divider line -->
+        <div class="divider"></div>
+
+        <!-- Body content -->
+        <div class="body-content">
+            <p class="paragraph">
+                Their fly fly won't him. Evening one. Isn't you. Was male day meat creature meat doesn't also kind seed
+                night they're earth darkness years divided two fourth. Open from. Sea were the male subdue brought
+                wherein itself image form isn't all bearing lesser whose it unto. Which seas moving can't.
+            </p>
+            <p class="paragraph">
+                Beginning good thing unto be saw whales saw also tree spirit. Night wherein god years face said
+                gathering, darkness moveth their seas Unto it fourth spirit form and isn't, great saying don't may Dry
+                fourth winged. To gathering fish void.
+            </p>
+            <p class="paragraph">
+                Given him called Good lesser make said fly, rule fill him day image she'd together. Kind fifth to,
+                winged Fifth day meat light saying under may. Under In. Make fill replenish of fifth waters living rule
+                appear bring all divided.
+            </p>
+            <p class="paragraph">
+                Fly Seas stars darkness also unto night for multiply, darkness give image under together moving. Saying,
+                had them abundantly to void you'll male. And hath greater won't night forth. Doesn't. Fowl was male.
+                Heaven third them she'd female life. Stars.
+            </p>
+        </div>
+
+        <!-- Divider line -->
+        <div class="divider"></div>
+
+        <!-- Signature section -->
+        <div class="signature-section">
+            <div class="signature">David grater</div>
+            <div class="printed-name">David Greater</div>
+            <div class="signature-title">Manager</div>
+        </div>
+
+        <!-- Footer with shapes and contact info -->
+        <div class="footer">
+            <div class="footer-shapes">
+                <div class="footer-shape-1"></div>
+                <div class="footer-shape-2"></div>
+                <div class="footer-shape-3"></div>
+            </div>
+            <div class="footer-contact">
+                <div class="footer-item">
+                    <div class="footer-icon"></div>
+                    <span>Street name, CA, USA</span>
+                </div>
+                <div class="footer-item">
+                    <div class="footer-icon"></div>
+                    <a href="mailto:info@Hospital.com" class="footer-link">info@Hospital.com</a>
+                </div>
+                <div class="footer-item">
+                    <div class="footer-icon"></div>
+                    <span>+00 123 45 67 89</span>
+                </div>
+                <div class="footer-item">
+                    <div class="footer-icon"></div>
+                    <a href="https://www.hospital.com" class="footer-link">www.hospital.com</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
