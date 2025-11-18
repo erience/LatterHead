@@ -1,0 +1,204 @@
+@page {
+  size: A4;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  background: #e9ecef;
+  font-family: Arial, sans-serif;
+}
+.heading {
+  margin-top: 50px;
+}
+/* Toolbar */
+.toolbar {
+  background: #fff;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.toolbar button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-save {
+  background: #28a745;
+}
+
+.btn-print {
+  background: #000;
+}
+
+/* PAGE (background image removed) */
+.page {
+  width: 210mm;
+  height: 297mm;
+  background: #fff; /* NO BG IMAGE */
+  margin: 20px auto;
+  padding: 50px 70px;
+  position: relative;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* -------------------------------------- */
+/*    SHAPES YOU REQUESTED ARE ADDED HERE */
+/* -------------------------------------- */
+
+/* HEADER SHAPE WRAPPER */
+.header-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 220px;
+  background: transparent;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* top gradient bar */
+.top-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 70px;
+  width: 100%;
+  background: linear-gradient(to right, #2aa7a5, #0f3d60);
+}
+
+/* small teal rectangle */
+.small-rect {
+  position: absolute;
+  top: 70px;
+  right: -11px;
+  width: 120px;
+  height: 44px;
+  background: #2aa7a5;
+}
+
+/* right diagonal shape */
+.right-shape {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 110px;
+  height: 93%;
+  background: linear-gradient(to bottom right, #2aa7a5, #0f3d60);
+  clip-path: polygon(100% 0, 100% 0, 100% 100%, 0 55%);
+}
+
+/* bottom bar */
+.bottom-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(to right, #174b63, #2aa7a5, #0f3d60);
+  z-index: 1;
+}
+
+/* left triangle */
+.left-triangle {
+  position: absolute;
+  bottom: 120px;
+  left: 15px;
+  width: 0;
+  height: 0;
+  transform: rotate(-40deg);
+  border-top: 90px solid #2aa7a5;
+  border-right: 80px solid transparent;
+  z-index: 1;
+}
+
+/* -------------------------------------- */
+
+/* Editable text */
+[contenteditable="true"] {
+  outline: 1px dashed transparent;
+}
+
+[contenteditable="true"]:hover {
+  outline: 1px dashed #aaa;
+}
+
+[contenteditable="true"]:focus {
+  outline: 1px dashed #28a745;
+}
+
+h1 {
+  margin: 0;
+  font-size: 32px;
+  color: #333;
+}
+
+p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #444;
+}
+
+/* Signature */
+.signature {
+  font-family: "Brush Script MT", cursive;
+  font-size: 34px;
+  margin-top: 50px;
+}
+
+/* Footer text */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Print mode */
+@media print {
+  .toolbar {
+    display: none;
+  }
+
+  .page {
+    margin: 0;
+    box-shadow: none;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .page {
+    width: auto;
+    height: auto;
+    /* padding: 20px; */
+    /* margin: 10px auto; */
+    background-size: cover;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  .signature {
+    font-size: 28px;
+  }
+}

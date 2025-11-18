@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letterhead</title>
+
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            margin: 0;
+            background: #e9ecef;
+            /* outer background */
+            font-family: Arial, sans-serif;
+        }
+
+        /* Toolbar */
+        .toolbar {
+            background: #fff;
+            padding: 10px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        }
+
+        .toolbar button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-save {
+            background: #28a745;
+        }
+
+        .btn-print {
+            background: #000;
+        }
+
+        /* Page */
+        .page {
+            width: 210mm;
+            height: 297mm;
+            background: url("Image/blurry-1.svg") no-repeat;
+            background-size: 100% 100%;
+            /* set exact height */
+            background-position: top left;
+
+            /* stretch width only */
+            margin: 20px auto;
+            padding: 50px 70px;
+            position: relative;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+            box-sizing: border-box;
+        }
+
+
+
+        /* Editable text */
+        [contenteditable="true"] {
+            outline: 1px dashed transparent;
+        }
+
+        [contenteditable="true"]:hover {
+            outline: 1px dashed #aaa;
+        }
+
+        [contenteditable="true"]:focus {
+            outline: 1px dashed #28a745;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 32px;
+            color: #333;
+        }
+
+        p {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #444;
+        }
+
+        .signature {
+            font-family: "Brush Script MT", cursive;
+            font-size: 34px;
+            margin-top: 50px;
+        }
+
+        @media print {
+            .toolbar {
+                display: none;
+            }
+
+            .page {
+                margin: 0;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+        <button class="btn-save" onclick="save()">Save</button>
+        <button class="btn-print" onclick="window.print()">Print</button>
+    </div>
+
+    <!-- PAGE -->
+    <div class="page">
+
+        <h1 contenteditable="true" id="name"> Company Name</h1>
+
+        <p contenteditable="true" id="contactA">A: 45, Lorem Road US - 8989</p>
+        <p contenteditable="true" id="contactW">W: email@ Company.com | www.website.com</p>
+        <p contenteditable="true" id="contactP">P: +880 - 12345 - 6789</p>
+        <p contenteditable="true" id="date" style="text-align:right;">Date: 12 January, 2030</p>
+
+        <p contenteditable="true" id="p1">Your paragraph text goes here...</p>
+        <p contenteditable="true" id="p2">Your next editable paragraph goes here...</p>
+        <p contenteditable="true" id="p3">Your next editable paragraph goes here...</p>
+
+        <p class="signature" contenteditable="true" id="signature">David Greter</p>
+        <p contenteditable="true" id="sign_name">David Greater</p>
+        <p contenteditable="true" id="sign_role">Manager</p>
+    </div>
+
+    <script>
+        const ids = [
+            "name", "contactA", "contactW", "contactP", "date",
+            "p1", "p2", "p3", "signature", "sign_name", "sign_role"
+        ];
+
+        const saved = {};
+
+        function save() {
+            ids.forEach(id => {
+                saved[id] = document.getElementById(id).innerHTML;
+            });
+            alert("Saved!");
+        }
+    </script>
+
+</body>
+
+</html>

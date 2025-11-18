@@ -1,0 +1,221 @@
+@page {
+  size: A4;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  background: #e9ecef;
+  font-family: Arial, sans-serif;
+}
+
+/* Toolbar */
+.toolbar {
+  background: #fff;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.toolbar button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-save {
+  background: #28a745;
+}
+
+.btn-print {
+  background: #000;
+}
+
+/* PAGE (background image removed) */
+.page {
+  width: 210mm;
+  height: 297mm;
+  background: #fff; /* NO BG IMAGE */
+  margin: 20px auto;
+  padding: 0px;
+  position: relative;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.content {
+  padding: 50px 70px;
+}
+
+/* -------------------------------------- */
+/*    SHAPES YOU REQUESTED ARE ADDED HERE */
+/* -------------------------------------- */
+
+/* HEADER SHAPE WRAPPER */
+.header-wrap {
+  position: relative;
+  width: 100%;
+  height: 120px;
+  overflow: hidden;
+}
+
+/* top gradient bar */
+.top-bar {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background: #0c517d;
+  /* dark blue */
+}
+
+/* small teal rectangle */
+.small-rect {
+  position: absolute;
+  top: 0px;
+  right: 80px;
+  /* adjust according to placement */
+  width: 250px;
+  height: 90px;
+  background: #1dbaff;
+  /* bright blue */
+}
+
+/* right diagonal shape */
+.right-shape {
+  position: absolute;
+  bottom: 30px;
+  right: 330px;
+  width: 0;
+  height: 0;
+  border-left: 35px solid transparent;
+  border-top: 30px solid #0c517dd6;
+}
+
+.header-container {
+  position: relative;
+  width: 100%;
+  height: 145px;
+  background: #fff;
+  overflow: hidden;
+  top: 195px;
+}
+
+/* bottom dark blue bar */
+.dark-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: #0b5380;
+  /* dark blue */
+}
+
+.blue-triangle {
+  position: absolute;
+  bottom: 17px;
+  left: 443px;
+  width: 0;
+  height: 0;
+  border-left: 45px solid #0c517dd6;
+  border-top: 45px solid transparent;
+  border-bottom: 45px solid transparent;
+  transform: rotate(135deg);
+}
+
+.blue-rect {
+  position: absolute;
+  bottom: 5px;
+  left: 150px;
+  width: 300px;
+  height: 105px;
+  background: #1ebaff;
+}
+
+/* -------------------------------------- */
+
+/* Editable text */
+[contenteditable="true"] {
+  outline: 1px dashed transparent;
+}
+
+[contenteditable="true"]:hover {
+  outline: 1px dashed #aaa;
+}
+
+[contenteditable="true"]:focus {
+  outline: 1px dashed #28a745;
+}
+
+h1 {
+  margin: 0;
+  font-size: 32px;
+  color: #333;
+}
+
+p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #444;
+}
+
+/* Signature */
+.signature {
+  font-family: "Brush Script MT", cursive;
+  font-size: 34px;
+  margin-top: 50px;
+}
+
+/* Footer text */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Print mode */
+@media print {
+  .toolbar {
+    display: none;
+  }
+
+  .page {
+    margin: 0;
+    box-shadow: none;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .page {
+    width: auto;
+    height: auto;
+    /* padding: 20px; */
+    /* margin: 10px auto; */
+    background-size: cover;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  .signature {
+    font-size: 28px;
+  }
+}

@@ -21,13 +21,13 @@
             border-right: 1px solid #ddd;
             height: 100%;
             overflow-y: auto;
+            transition: left .3s ease;
         }
 
         .sidebar-item {
             cursor: pointer;
             padding: 10px;
             border-bottom: 1px solid #eee;
-            transition: background .2s;
         }
 
         .sidebar-item:hover {
@@ -48,18 +48,46 @@
             border: none;
         }
 
-        /* Mobile Handling */
+        /* Mobile Sidebar Slide-In */
         @media (max-width: 768px) {
             .sidebar {
-                height: auto;
-                border-right: none;
-                border-bottom: 1px solid #ddd;
+                position: fixed;
+                top: 0;
+                left: -260px;
+                width: 260px;
+                height: 100%;
+                z-index: 999;
+            }
+
+            .sidebar.open {
+                left: 0;
+            }
+
+            #overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.4);
+                display: none;
+                z-index: 998;
+            }
+
+            #overlay.show {
+                display: block;
             }
         }
     </style>
 </head>
 
 <body>
+
+    <!-- Mobile Toggle Button -->
+    <button class="btn btn-dark d-md-none m-2" id="sidebarToggle">☰ Menu</button>
+
+    <!-- Overlay -->
+    <div id="overlay"></div>
 
     <div class="container-fluid h-100">
         <div class="row h-100">
@@ -69,97 +97,119 @@
 
                 <h5 class="p-3">Letterheads</h5>
 
-                <div class="sidebar-item d-flex align-items-center" onclick="loadPreview('Letterhead_1_.html')">
+                <!-- Close button (mobile only) -->
+                <button id="closeSidebar" class="btn btn-dark d-md-none ms-3 mb-2">Close ✕</button>
+
+                <div class="sidebar-item d-flex align-items-center" onclick="changeDesign('designs/design1.css')">
                     <img src="thumbs/letterhead1.jpg" alt="">
                     <span>Letterhead 1</span>
                 </div>
 
-                <div class="sidebar-item d-flex align-items-center" onclick="loadPreview('Letterhead_2_.html')">
+                <div class="sidebar-item d-flex align-items-center" onclick="changeDesign('designs/design2.css')">
                     <img src="thumbs/letterhead2.jpg" alt="">
                     <span>Letterhead 2</span>
                 </div>
 
-                <div class="sidebar-item d-flex align-items-center" onclick="loadPreview('Letterhead_3_.html')">
+                <div class="sidebar-item d-flex align-items-center" onclick="changeDesign('designs/design3.css')">
                     <img src="thumbs/letterhead3.jpg" alt="">
                     <span>Letterhead 3</span>
                 </div>
 
-                <div class="sidebar-item d-flex align-items-center" onclick="loadPreview('Letterhead_4_.html')">
+                <div class="sidebar-item d-flex align-items-center" onclick="changeDesign('designs/design4.css')">
                     <img src="thumbs/letterhead4.jpg" alt="">
                     <span>Letterhead 4</span>
                 </div>
 
-                <div class="sidebar-item d-flex align-items-center" onclick="loadPreview('Letterhead_5_.html')">
+                <div class="sidebar-item d-flex align-items-center" onclick="changeDesign('designs/design5.css')">
                     <img src="thumbs/letterhead5.jpg" alt="">
                     <span>Letterhead 5</span>
                 </div>
 
-                <div class="sidebar-item d-flex align-items-center" onclick="loadPreview('Letterhead_6_.html')">
+                <div class="sidebar-item d-flex align-items-center" onclick="changeDesign('designs/design6.css')">
                     <img src="thumbs/letterhead6.jpg" alt="">
                     <span>Letterhead 6</span>
                 </div>
 
-                <div class="sidebar-item d-flex align-items-center" onclick="loadPreview('Letterhead_7_.html')">
+                <div class="sidebar-item d-flex align-items-center" onclick="changeDesign('designs/design7.css')">
                     <img src="thumbs/letterhead7.jpg" alt="">
                     <span>Letterhead 7</span>
                 </div>
 
-                <div class="sidebar-item d-flex align-items-center" onclick="loadPreview('Letterhead_8_.html')">
+                <div class="sidebar-item d-flex align-items-center" onclick="changeDesign('designs/design8.css')">
                     <img src="thumbs/letterhead8.jpg" alt="">
                     <span>Letterhead 8</span>
                 </div>
 
-                <div class="sidebar-item d-flex align-items-center" onclick="loadPreview('Letterhead_9_.html')">
+                <!-- <div class="sidebar-item d-flex align-items-center" onclick="changeDesign('designs/design9.css')">
                     <img src="thumbs/letterhead9.jpg" alt="">
                     <span>Letterhead 9</span>
                 </div>
 
-                <div class="sidebar-item d-flex align-items-center" onclick="loadPreview('Letterhead_10_.html')">
+                <div class="sidebar-item d-flex align-items-center" onclick="changeDesign('designs/design10.css')">
                     <img src="thumbs/letterhead10.jpg" alt="">
                     <span>Letterhead 10</span>
                 </div>
 
-                <div class="sidebar-item d-flex align-items-center" onclick="loadPreview('Letterhead_11_.html')">
+                <div class="sidebar-item d-flex align-items-center" onclick="changeDesign('designs/design11.css')">
                     <img src="thumbs/letterhead11.jpg" alt="">
                     <span>Letterhead 11</span>
                 </div>
 
-                <div class="sidebar-item d-flex align-items-center" onclick="loadPreview('Letterhead_12_.html')">
+                <div class="sidebar-item d-flex align-items-center" onclick="changeDesign('designs/design12.css')">
                     <img src="thumbs/letterhead12.jpg" alt="">
                     <span>Letterhead 12</span>
                 </div>
 
-                <div class="sidebar-item d-flex align-items-center" onclick="loadPreview('Letterhead_13_.html')">
+                <div class="sidebar-item d-flex align-items-center" onclick="changeDesign('designs/design13.css')">
                     <img src="thumbs/letterhead13.jpg" alt="">
                     <span>Letterhead 13</span>
                 </div>
 
-                <div class="sidebar-item d-flex align-items-center" onclick="loadPreview('Letterhead_14_.html')">
+                <div class="sidebar-item d-flex align-items-center" onclick="changeDesign('designs/design14.css')">
                     <img src="thumbs/letterhead14.jpg" alt="">
                     <span>Letterhead 14</span>
                 </div>
 
-                <div class="sidebar-item d-flex align-items-center" onclick="loadPreview('Letterhead_15_.html')">
+                <div class="sidebar-item d-flex align-items-center" onclick="changeDesign('designs/design15.css')">
                     <img src="thumbs/letterhead15.jpg" alt="">
                     <span>Letterhead 15</span>
-                </div>
+                </div> -->
 
             </div>
 
             <!-- Preview panel -->
             <div class="col-12 col-md-9 col-lg-10 p-0">
-                <iframe id="previewFrame" src="Letterhead_1_.html"></iframe>
-
+                <iframe id="previewFrame" src="LetterheadContent.html"></iframe>
             </div>
 
         </div>
     </div>
 
     <script>
-        function loadPreview(page) {
-            document.getElementById("previewFrame").src = page;
-            window.scrollTo({ top: 0, behavior: "smooth" });
+        function changeDesign(cssFile) {
+            const frame = document.getElementById("previewFrame");
+            frame.contentWindow.document.getElementById("design-style").href = cssFile;
         }
+
+        const sidebar = document.querySelector(".sidebar");
+        const toggleBtn = document.getElementById("sidebarToggle");
+        const closeBtn = document.getElementById("closeSidebar");
+        const overlay = document.getElementById("overlay");
+
+        toggleBtn.addEventListener("click", () => {
+            sidebar.classList.toggle("open");
+            overlay.classList.toggle("show");
+        });
+
+        closeBtn.addEventListener("click", () => {
+            sidebar.classList.remove("open");
+            overlay.classList.remove("show");
+        });
+
+        overlay.addEventListener("click", () => {
+            sidebar.classList.remove("open");
+            overlay.classList.remove("show");
+        });
     </script>
 
 </body>

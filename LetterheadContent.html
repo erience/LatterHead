@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letterhead - Design</title>
+
+    <!-- Load external CSS -->
+    <link id="design-style" rel="stylesheet" href="designs/design1.css">
+</head>
+
+<body>
+
+    <!-- Top Toolbar -->
+    <div class="toolbar">
+        <div>
+            <button class="btn-save" onclick="saveData()">Save</button>
+            <button class="btn-print" onclick="window.print()">Print</button>
+        </div>
+    </div>
+
+    <!-- PAGE -->
+    <div class="page">
+        <div class="header-wrap">
+            <div class="top-bar"></div>
+            <div class="small-rect"></div>
+            <div class="right-shape"></div>
+        </div>
+
+        <div class="content">
+            <!-- Heading -->
+
+            <div class="heading">
+                <h1 contenteditable="true" id="name">Andrew Wilson</h1>
+                <p contenteditable="true" class="role" id="role">Senior Executive</p>
+            </div>
+            <div class="left-triangle"></div>
+
+            <!-- Content -->
+            <div class="content-container">
+
+                <p contenteditable="true" id="p1">I am pleased to introduce our newly designed letterhead.</p>
+                <p contenteditable="true" id="p2">Crafted to reflect the essence of professionalism and reliability
+                    synonymous with [Your Company].</p>
+                <p contenteditable="true" id="p3">At the heart of this design is simplicity...</p>
+                <p contenteditable="true" id="p4">Inspired by the form of our logo ...</p>
+                <p contenteditable="true" id="p5">Thank you for your attention to this matter...</p>
+
+                <div class="signature-block">
+                    <p class="signature" contenteditable="true" id="signature">andrew wilson</p>
+                    <p class="sign-name" contenteditable="true" id="sign_name">Andrew Wilson</p>
+                    <p class="sign-title" contenteditable="true" id="sign_title">Senior Executive</p>
+                </div>
+
+            </div>
+
+            <!-- Footer -->
+            <div class="footer">
+                <div class="footer-block">
+                    <p contenteditable="true" id="foot1">4/A Rosewood</p>
+                    <p contenteditable="true" id="foot2">12 345 678 910</p>
+                </div>
+
+                <div class="footer-block">
+                    <p contenteditable="true" id="foot3">www.yourwebsite.com</p>
+                    <p contenteditable="true" id="foot4">youreamil@email.com</p>
+                </div>
+            </div>
+        </div>
+        <!-- Bottom full-width gradient bar -->
+        <div class="bottom-bar"></div>
+        <div class="header-container">
+            <div class="dark-bar"></div>
+            <div class="blue-rect"></div>
+            <div class="blue-triangle"></div>
+        </div>
+    </div>
+
+    <script>
+        const ids = [
+            "name", "role", "p1", "p2", "p3", "p4", "p5",
+            "signature", "sign_name", "sign_title",
+            "foot1", "foot2", "foot3", "foot4"
+        ];
+
+        const saved = {};
+
+        function saveData() {
+            ids.forEach(id => {
+                const el = document.getElementById(id);
+                saved[id] = el.innerHTML;
+            });
+            alert("Saved!");
+        }
+    </script>
+
+</body>
+
+</html>

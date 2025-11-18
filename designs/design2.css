@@ -1,0 +1,128 @@
+@page {
+  size: A4;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  background: #e9ecef;
+  font-family: Arial, sans-serif;
+}
+
+/* Toolbar */
+.toolbar {
+  background: #fff;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.toolbar button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-save {
+  background: #28a745;
+}
+
+.btn-print {
+  background: #000;
+}
+
+/* Page */
+.page {
+  width: 210mm;
+  height: 297mm;
+  background: url("/Image/blob-2.svg") no-repeat;
+  background-size: 100% 100%;
+  background-position: top left;
+  margin: 20px auto;
+  padding: 50px 70px;
+  position: relative;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+}
+
+/* Editable text */
+[contenteditable="true"] {
+  outline: 1px dashed transparent;
+}
+
+[contenteditable="true"]:hover {
+  outline: 1px dashed #aaa;
+}
+
+[contenteditable="true"]:focus {
+  outline: 1px dashed #28a745;
+}
+
+h1 {
+  margin: 0;
+  font-size: 32px;
+  color: #333;
+}
+
+p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #444;
+}
+
+/* Signature */
+.signature {
+  font-family: "Brush Script MT", cursive;
+  font-size: 34px;
+  margin-top: 50px;
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+/* Print mode */
+@media print {
+  .toolbar {
+    display: none;
+  }
+
+  .page {
+    margin: 0;
+    box-shadow: none;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .page {
+    width: auto;
+    height: auto;
+    /* padding: 20px; */
+    /* margin: 10px auto; */
+    background-size: cover;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  .signature {
+    font-size: 28px;
+  }
+}
