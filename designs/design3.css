@@ -4,17 +4,12 @@
 }
 
 @media print {
-  html,
-  body {
-    width: 210mm;
-    height: 297mm;
-  }
-
   .toolbar {
-    display: none;
+    display: none !important;
   }
 
   .page {
+    margin: 0% !important;
     height: 297mm;
     width: 210mm;
     box-shadow: none !important;
@@ -114,26 +109,245 @@ p {
   margin-top: 50px;
 }
 
-/* Print mode */
-@media print {
-  .toolbar {
-    display: none;
-  }
-
+/* iPhone (Portrait and Landscape) */
+@media only screen and (max-width: 768px) {
   .page {
-    margin: 0;
-    box-shadow: none;
+    width: 97mm;
+    height: 144mm;
+    background: url("/Image/blurry-1.svg") no-repeat;
+    background-size: 24rem;
+    background-position: top center;
+    margin: 5px 5px;
+    padding: 10px;
+    position: relative;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
   }
-}
-
-/* Mobile adjustments */
-@media (max-width: 768px) {
   h1 {
     font-size: 24px;
   }
 
   p {
-    font-size: 14px;
+    font-size: 12px;
+  }
+
+  .signature {
+    font-size: 28px;
+  }
+}
+
+/* iPhone SE */
+@media only screen and (max-width: 375px) {
+  .page {
+    width: 97mm;
+    height: 144mm;
+    background: url("/Image/blurry-1.svg") no-repeat;
+    background-size: 24rem;
+    background-position: top center;
+    margin: 5px 5px;
+    padding: 10px;
+    position: relative;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+  }
+  h1 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  .signature {
+    font-size: 28px;
+  }
+}
+
+/* iPad */
+@media only screen and (max-width: 1024px) {
+  .page {
+    width: 97mm;
+    height: 144mm;
+    background: url("/Image/blurry-1.svg") no-repeat;
+    background-size: 24rem;
+    background-position: top center;
+    margin: 5px 5px;
+    padding: 10px;
+    position: relative;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+  }
+  h1 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  .signature {
+    font-size: 28px;
+  }
+}
+
+/* Laptop (1366px and below) */
+@media only screen and (max-width: 1366px) {
+  .page {
+    width: 97mm;
+    height: 144mm;
+    background: url("/Image/blurry-1.svg") no-repeat;
+    background-size: 24rem;
+    background-position: top center;
+    margin: 5px 5px;
+    padding: 10px;
+    position: relative;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+  }
+  h1 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  .signature {
+    font-size: 28px;
+  }
+}
+
+/* Mac (Desktop) */
+@media only screen and (max-width: 1920px) {
+  .page {
+    width: 210mm;
+    height: 297mm;
+    background: url("/Image/blurry-1.svg") no-repeat;
+    background-size: 100% 100%;
+    background-position: top left;
+    margin: 20px auto;
+    padding: 50px 70px;
+    position: relative;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  p {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  /* Signature */
+  .signature {
+    font-size: 34px;
+  }
+}
+
+/* Android Devices (Portrait) */
+@media only screen and (max-width: 480px) {
+  .page {
+    width: 97mm;
+    height: 144mm;
+    background: url("/Image/blurry-1.svg") no-repeat;
+    background-size: 24rem;
+    background-position: top center;
+    margin: 5px 5px;
+    padding: 10px;
+    position: relative;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+  }
+  h1 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  .signature {
+    font-size: 28px;
+  }
+}
+
+/* Samsung Devices (Portrait) */
+@media only screen and (max-width: 412px) {
+  .page {
+    width: 97mm;
+    height: 144mm;
+    background: url("/Image/blurry-1.svg") no-repeat;
+    background-size: 24rem;
+    background-position: top center;
+    margin: 5px 5px;
+    padding: 10px;
+    position: relative;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+  }
+  h1 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  .signature {
+    font-size: 28px;
+  }
+}
+
+/* Vivo Devices (Portrait) */
+@media only screen and (max-width: 360px) {
+  .page {
+    width: 97mm;
+    height: 144mm;
+    background: url("/Image/blurry-1.svg") no-repeat;
+    background-size: 24rem;
+    background-position: top center;
+    margin: 5px 5px;
+    padding: 10px;
+    position: relative;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+  }
+  h1 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  .signature {
+    font-size: 28px;
+  }
+}
+
+/* Windows (Below 1024px) */
+@media only screen and (max-width: 1024px) and (min-width: 768px) {
+  .page {
+    width: 97mm;
+    height: 144mm;
+    background: url("/Image/blurry-1.svg") no-repeat;
+    background-size: 24rem;
+    background-position: top center;
+    margin: 5px 5px;
+    padding: 10px;
+    position: relative;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+  }
+  h1 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 12px;
   }
 
   .signature {

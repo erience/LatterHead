@@ -2,44 +2,109 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Letterhead Preview</title>
 
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 
     <style>
         body,
         html {
             height: 100%;
             margin: 0;
+            background: #e9ecef;
+            overflow: hidden;
         }
 
+        /* TOP BAR */
+        .topbar {
+            height: 56px;
+            background: #fff;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1003;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-save {
+            background: #28a745;
+            color: #fff;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 4px;
+        }
+
+        .btn-print {
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 4px;
+        }
+
+        /* SIDEBAR */
         .sidebar {
+            position: fixed;
+            top: 56px;
+            left: 0;
+            width: 250px;
+            height: calc(100vh - 56px);
             background: #f8f9fa;
             border-right: 1px solid #ddd;
-            height: 100%;
             overflow-y: auto;
-            transition: left .3s ease;
+            transition: transform 0.3s ease;
+            z-index: 1002;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
         }
 
         .sidebar-item {
-            cursor: pointer;
             padding: 10px;
             border-bottom: 1px solid #eee;
+            cursor: pointer;
         }
 
         .sidebar-item:hover {
             background: #e6e6e6;
         }
 
-        .sidebar-item img {
+        .sidebar-item.active {
+            background: #eef5ff;
+            border-left: 4px solid #0d6efd;
+        }
+
+        .sidebar img {
             width: 100%;
-            height: 50%;
-            object-fit: cover;
-            margin-right: 10px;
             border-radius: 4px;
+        }
+
+        /* IFRAME AREA */
+        .preview-area {
+            position: absolute;
+            left: 250px;
+            top: 56px;
+            right: 0;
+            bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .preview-area {
+                left: 0;
+            }
         }
 
         iframe {
@@ -48,30 +113,20 @@
             border: none;
         }
 
-        /* Mobile Sidebar Slide-In */
+        /* OVERLAY */
+        #overlay {
+            display: none;
+        }
+
         @media (max-width: 768px) {
-            .sidebar {
-                position: fixed;
-                top: 0;
-                left: -260px;
-                width: 260px;
-                height: 100%;
-                z-index: 999;
-            }
-
-            .sidebar.open {
-                left: 0;
-            }
-
             #overlay {
                 position: fixed;
-                top: 0;
+                top: 56px;
                 left: 0;
-                width: 100%;
-                height: 100%;
+                right: 0;
+                bottom: 0;
                 background: rgba(0, 0, 0, 0.4);
-                display: none;
-                z-index: 998;
+                z-index: 900;
             }
 
             #overlay.show {
@@ -83,133 +138,107 @@
 
 <body>
 
-    <!-- Mobile Toggle Button -->
-    <button class="btn btn-dark d-md-none m-2" id="sidebarToggle">☰ Menu</button>
+    <!-- TOP BAR -->
+    <div class="topbar">
+        <!-- Mobile Toggle + Close (auto switch) -->
+        <button class="btn text-dark border  d-md-none me-3" id="sidebarToggle">☰</button>
+        <button class="btn text-dark border d-md-none me-3" id="sidebarClose" style="display:none;">✕</button>
 
-    <!-- Overlay -->
+        <h5 class="m-0 flex-grow-1">Letterheads</h5>
+        <button class="btn-save me-2" onclick="saveToIframe()">Save</button>
+        <button class="btn-print" onclick="printIframePage()">Print</button>
+    </div>
+
+    <!-- OVERLAY -->
     <div id="overlay"></div>
 
-    <div class="container-fluid h-100">
-        <div class="row h-100">
+    <!-- SIDEBAR -->
+    <div class="sidebar p-0" id="sidebar">
 
-            <!-- Sidebar -->
-            <div class="col-12 col-md-3 col-lg-2 sidebar p-0">
 
-                <h5 class="p-3">Letterheads</h5>
 
-                <!-- Close button (mobile only) -->
-                <button id="closeSidebar" class="btn btn-dark d-md-none ms-3 mb-2">Close ✕</button>
+        <div class="sidebar-item" onclick="changeDesign('designs/design1.css', this)">
+            <p>LetterHead 1</p>
+            <img src="Image/Screenshot (106).png">
+        </div>
 
-                <div class="sidebar-item " onclick="changeDesign('designs/design1.css')">
-                    <img src="Image/Screenshot (106).png" alt="">
-                    <!-- <span>Letterhead 1</span> -->
-                </div>
+        <div class="sidebar-item" onclick="changeDesign('designs/design2.css', this)">
+            <p>LetterHead 2</p>
+            <img src="Image/Screenshot (107).png">
+        </div>
 
-                <div class="sidebar-item " onclick="changeDesign('designs/design2.css')">
-                    <img src="Image/Screenshot (107).png" alt="">
-                    <!-- <span>Letterhead 2</span> -->
-                </div>
+        <div class="sidebar-item" onclick="changeDesign('designs/design3.css', this)">
+            <p>LetterHead 3</p>
+            <img src="Image/Screenshot (108).png">
+        </div>
 
-                <div class="sidebar-item " onclick="changeDesign('designs/design3.css')">
-                    <img src="Image/Screenshot (108).png" alt="">
-                    <!-- <span>Letterhead 3</span> -->
-                </div>
+        <div class="sidebar-item" onclick="changeDesign('designs/design4.css', this)">
+            <p>LetterHead 4</p>
+            <img src="Image/Screenshot (109).png">
+        </div>
 
-                <div class="sidebar-item " onclick="changeDesign('designs/design4.css')">
-                    <img src="Image/Screenshot (109).png" alt="">
-                    <!-- <span>Letterhead 4</span> -->
-                </div>
+        <div class="sidebar-item" onclick="changeDesign('designs/design5.css', this)">
+            <p>LetterHead 5</p>
+            <img src="Image/Screenshot (110).png">
+        </div>
 
-                <div class="sidebar-item " onclick="changeDesign('designs/design5.css')">
-                    <img src="Image/Screenshot (110).png" alt="">
-                    <!-- <span>Letterhead 5</span> -->
-                </div>
-
-                <div class="sidebar-item " onclick="changeDesign('designs/design6.css')">
-                    <img src="Image/Screenshot (111).png" alt="">
-                    <!-- <span>Letterhead 6</span> -->
-                </div>
-
-                <div class="sidebar-item " onclick="changeDesign('designs/design7.css')">
-                    <img src="Image/Screenshot (112).png" alt="">
-                    <!-- <span>Letterhead 7</span> -->
-                </div>
-
-                <div class="sidebar-item " onclick="changeDesign('designs/design8.css')">
-                    <img src="Image/Screenshot (113).png" alt="">
-                    <!-- <span>Letterhead 8</span> -->
-                </div>
-
-                <!-- <div class="sidebar-item " onclick="changeDesign('designs/design9.css')">
-                    <img src="Image/Screenshot (106).png" alt="">
-                    <span>Letterhead 9</span>
-                </div>
-
-                <div class="sidebar-item " onclick="changeDesign('designs/design10.css')">
-                    <img src="Image/Screenshot (106).png" alt="">
-                    <span>Letterhead 10</span>
-                </div>
-
-                <div class="sidebar-item " onclick="changeDesign('designs/design11.css')">
-                    <img src="Image/Screenshot (106).png" alt="">
-                    <span>Letterhead 11</span>
-                </div>
-
-                <div class="sidebar-item " onclick="changeDesign('designs/design12.css')">
-                    <img src="Image/Screenshot (106).png" alt="">
-                    <span>Letterhead 12</span>
-                </div>
-
-                <div class="sidebar-item " onclick="changeDesign('designs/design13.css')">
-                    <img src="Image/Screenshot (106).png" alt="">
-                    <span>Letterhead 13</span>
-                </div>
-
-                <div class="sidebar-item " onclick="changeDesign('designs/design14.css')">
-                    <img src="Image/Screenshot (106).png" alt="">
-                    <span>Letterhead 14</span>
-                </div>
-
-                <div class="sidebar-item " onclick="changeDesign('designs/design15.css')">
-                    <img src="Image/Screenshot (106).png" alt="">
-                    <span>Letterhead 15</span>
-                </div> -->
-
-            </div>
-
-            <!-- Preview panel -->
-            <div class="col-12 col-md-9 col-lg-10 p-0">
-                <iframe id="previewFrame" src="LetterheadContent.html"></iframe>
-            </div>
-
+        <div class="sidebar-item" onclick="changeDesign('designs/design6.css', this)">
+            <p>LetterHead 6</p>
+            <img src="Image/Screenshot (111).png">
         </div>
     </div>
 
+    <!-- PREVIEW -->
+    <div class="preview-area">
+        <iframe id="previewFrame" src="LetterheadContent.html"></iframe>
+    </div>
+
     <script>
-        function changeDesign(cssFile) {
-            const frame = document.getElementById("previewFrame");
-            frame.contentWindow.document.getElementById("design-style").href = cssFile;
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("overlay");
+        const sidebarToggle = document.getElementById("sidebarToggle");
+        const sidebarClose = document.getElementById("sidebarClose");
+
+        // OPEN SIDEBAR
+        sidebarToggle.onclick = () => {
+            sidebar.classList.add("open");
+            overlay.classList.add("show");
+
+            sidebarToggle.style.display = "none";     // hide ☰
+            sidebarClose.style.display = "block";     // show X
+        };
+
+        // CLOSE SIDEBAR
+        function hideSidebar() {
+            sidebar.classList.remove("open");
+            overlay.classList.remove("show");
+
+            sidebarClose.style.display = "none";      // hide X
+            sidebarToggle.style.display = "block";    // show ☰
         }
 
-        const sidebar = document.querySelector(".sidebar");
-        const toggleBtn = document.getElementById("sidebarToggle");
-        const closeBtn = document.getElementById("closeSidebar");
-        const overlay = document.getElementById("overlay");
+        sidebarClose.onclick = hideSidebar;
+        overlay.onclick = hideSidebar;
 
-        toggleBtn.addEventListener("click", () => {
-            sidebar.classList.toggle("open");
-            overlay.classList.toggle("show");
-        });
+        function saveToIframe() {
+            const frame = document.getElementById("previewFrame");
+            if (frame.contentWindow.saveData) frame.contentWindow.saveData();
+        }
 
-        closeBtn.addEventListener("click", () => {
-            sidebar.classList.remove("open");
-            overlay.classList.remove("show");
-        });
+        function printIframePage() {
+            const frame = document.getElementById("previewFrame");
+            frame.contentWindow.print();
+        }
 
-        overlay.addEventListener("click", () => {
-            sidebar.classList.remove("open");
-            overlay.classList.remove("show");
-        });
+        function changeDesign(cssFile, element) {
+            const frame = document.getElementById("previewFrame");
+            frame.contentWindow.document.getElementById("design-style").href = cssFile;
+
+            document.querySelectorAll(".sidebar-item").forEach(item => item.classList.remove("active"));
+            element.classList.add("active");
+
+            if (window.innerWidth < 768) hideSidebar();
+        }
     </script>
 
 </body>

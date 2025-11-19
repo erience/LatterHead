@@ -4,17 +4,12 @@
 }
 
 @media print {
-  html,
-  body {
-    width: 210mm;
-    height: 297mm;
-  }
-
   .toolbar {
-    display: none;
+    display: none !important;
   }
 
   .page {
+    margin: 0% !important;
     height: 297mm;
     width: 210mm;
     box-shadow: none !important;
@@ -199,29 +194,775 @@ p {
   top: 195px;
 }
 
-/* Print mode */
-@media print {
-  .toolbar {
-    display: none;
-  }
-
+/* iPhone (Portrait and Landscape) */
+@media only screen and (max-width: 768px) {
   .page {
-    margin: 0;
-    box-shadow: none;
+    width: 97mm;
+    height: 144mm;
+    background: #fff; /* NO BG IMAGE */
+    margin: 20px auto;
+    padding: 50px 70px;
+    position: relative;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    overflow: hidden;
   }
-}
-
-/* Mobile adjustments */
-@media (max-width: 768px) {
   h1 {
     font-size: 24px;
   }
 
   p {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .signature {
     font-size: 28px;
+  }
+}
+
+/* iPhone SE */
+@media only screen and (max-width: 375px) {
+  .page {
+    width: 97mm;
+    height: 144mm;
+    background: #fff; /* NO BG IMAGE */
+    margin: 20px auto;
+    padding: 50px 70px;
+    position: relative;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  h1 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  .signature {
+    font-size: 28px;
+  }
+
+  /* HEADER SHAPE WRAPPER */
+  .header-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 220px;
+    background: transparent;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  /* top gradient bar */
+  .top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 70px;
+    width: 100%;
+    background: linear-gradient(to right, #2aa7a5, #0f3d60);
+  }
+
+  /* small teal rectangle */
+  .small-rect {
+    position: absolute;
+    top: 70px;
+    right: -11px;
+    width: 120px;
+    height: 44px;
+    background: #2aa7a5;
+  }
+
+  /* right diagonal shape */
+  .right-shape {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 110px;
+    height: 93%;
+    background: linear-gradient(to bottom right, #2aa7a5, #0f3d60);
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 0 55%);
+  }
+
+  /* bottom bar */
+  .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(to right, #174b63, #2aa7a5, #0f3d60);
+    z-index: 1;
+  }
+
+  /* left triangle */
+  .left-triangle {
+    position: absolute;
+    bottom: 120px;
+    left: 15px;
+    width: 0;
+    height: 0;
+    transform: rotate(-40deg);
+    border-top: 90px solid #2aa7a5;
+    border-right: 80px solid transparent;
+    z-index: 1;
+  }
+}
+
+/* iPad */
+@media only screen and (max-width: 1024px) {
+  .page {
+    width: 97mm;
+    height: 144mm;
+    background: #fff; /* NO BG IMAGE */
+    margin: 20px auto;
+    padding: 50px 70px;
+    position: relative;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  h1 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  .signature {
+    font-size: 28px;
+  }
+
+  /* HEADER SHAPE WRAPPER */
+  .header-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 220px;
+    background: transparent;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  /* top gradient bar */
+  .top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 70px;
+    width: 100%;
+    background: linear-gradient(to right, #2aa7a5, #0f3d60);
+  }
+
+  /* small teal rectangle */
+  .small-rect {
+    position: absolute;
+    top: 70px;
+    right: -11px;
+    width: 120px;
+    height: 44px;
+    background: #2aa7a5;
+  }
+
+  /* right diagonal shape */
+  .right-shape {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 110px;
+    height: 93%;
+    background: linear-gradient(to bottom right, #2aa7a5, #0f3d60);
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 0 55%);
+  }
+
+  /* bottom bar */
+  .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(to right, #174b63, #2aa7a5, #0f3d60);
+    z-index: 1;
+  }
+
+  /* left triangle */
+  .left-triangle {
+    position: absolute;
+    bottom: 120px;
+    left: 15px;
+    width: 0;
+    height: 0;
+    transform: rotate(-40deg);
+    border-top: 90px solid #2aa7a5;
+    border-right: 80px solid transparent;
+    z-index: 1;
+  }
+}
+
+/* Laptop (1366px and below) */
+@media only screen and (max-width: 1366px) {
+  .page {
+    width: 97mm;
+    height: 144mm;
+    background: #fff; /* NO BG IMAGE */
+    margin: 20px auto;
+    padding: 50px 70px;
+    position: relative;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  h1 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  .signature {
+    font-size: 28px;
+  }
+
+  /* HEADER SHAPE WRAPPER */
+  .header-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 220px;
+    background: transparent;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  /* top gradient bar */
+  .top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 70px;
+    width: 100%;
+    background: linear-gradient(to right, #2aa7a5, #0f3d60);
+  }
+
+  /* small teal rectangle */
+  .small-rect {
+    position: absolute;
+    top: 70px;
+    right: -11px;
+    width: 120px;
+    height: 44px;
+    background: #2aa7a5;
+  }
+
+  /* right diagonal shape */
+  .right-shape {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 110px;
+    height: 93%;
+    background: linear-gradient(to bottom right, #2aa7a5, #0f3d60);
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 0 55%);
+  }
+
+  /* bottom bar */
+  .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(to right, #174b63, #2aa7a5, #0f3d60);
+    z-index: 1;
+  }
+
+  /* left triangle */
+  .left-triangle {
+    position: absolute;
+    bottom: 120px;
+    left: 15px;
+    width: 0;
+    height: 0;
+    transform: rotate(-40deg);
+    border-top: 90px solid #2aa7a5;
+    border-right: 80px solid transparent;
+    z-index: 1;
+  }
+}
+
+/* Mac (Desktop) */
+@media only screen and (max-width: 1920px) {
+  .page {
+    width: 210mm;
+    height: 297mm;
+    background: #fff; /* NO BG IMAGE */
+    margin: 20px auto;
+    padding: 50px 70px;
+    position: relative;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  p {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  /* Signature */
+  .signature {
+    font-size: 34px;
+  }
+
+  /* HEADER SHAPE WRAPPER */
+  .header-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 220px;
+    background: transparent;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  /* top gradient bar */
+  .top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 70px;
+    width: 100%;
+    background: linear-gradient(to right, #2aa7a5, #0f3d60);
+  }
+
+  /* small teal rectangle */
+  .small-rect {
+    position: absolute;
+    top: 70px;
+    right: -11px;
+    width: 120px;
+    height: 44px;
+    background: #2aa7a5;
+  }
+
+  /* right diagonal shape */
+  .right-shape {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 110px;
+    height: 93%;
+    background: linear-gradient(to bottom right, #2aa7a5, #0f3d60);
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 0 55%);
+  }
+
+  /* bottom bar */
+  .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(to right, #174b63, #2aa7a5, #0f3d60);
+    z-index: 1;
+  }
+
+  /* left triangle */
+  .left-triangle {
+    position: absolute;
+    bottom: 120px;
+    left: 15px;
+    width: 0;
+    height: 0;
+    transform: rotate(-40deg);
+    border-top: 90px solid #2aa7a5;
+    border-right: 80px solid transparent;
+    z-index: 1;
+  }
+}
+
+/* Android Devices (Portrait) */
+@media only screen and (max-width: 480px) {
+  .page {
+    width: 97mm;
+    height: 144mm;
+    background: #fff; /* NO BG IMAGE */
+    margin: 20px auto;
+    padding: 50px 70px;
+    position: relative;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  h1 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  .signature {
+    font-size: 28px;
+  }
+
+  /* HEADER SHAPE WRAPPER */
+  .header-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 220px;
+    background: transparent;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  /* top gradient bar */
+  .top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 70px;
+    width: 100%;
+    background: linear-gradient(to right, #2aa7a5, #0f3d60);
+  }
+
+  /* small teal rectangle */
+  .small-rect {
+    position: absolute;
+    top: 70px;
+    right: -11px;
+    width: 120px;
+    height: 44px;
+    background: #2aa7a5;
+  }
+
+  /* right diagonal shape */
+  .right-shape {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 110px;
+    height: 93%;
+    background: linear-gradient(to bottom right, #2aa7a5, #0f3d60);
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 0 55%);
+  }
+
+  /* bottom bar */
+  .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(to right, #174b63, #2aa7a5, #0f3d60);
+    z-index: 1;
+  }
+
+  /* left triangle */
+  .left-triangle {
+    position: absolute;
+    bottom: 120px;
+    left: 15px;
+    width: 0;
+    height: 0;
+    transform: rotate(-40deg);
+    border-top: 90px solid #2aa7a5;
+    border-right: 80px solid transparent;
+    z-index: 1;
+  }
+}
+
+/* Samsung Devices (Portrait) */
+@media only screen and (max-width: 412px) {
+  .page {
+    width: 97mm;
+    height: 144mm;
+    background: #fff; /* NO BG IMAGE */
+    margin: 20px auto;
+    padding: 50px 70px;
+    position: relative;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  h1 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  .signature {
+    font-size: 28px;
+  }
+
+  /* HEADER SHAPE WRAPPER */
+  .header-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 220px;
+    background: transparent;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  /* top gradient bar */
+  .top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 40px;
+    width: 100%;
+    background: linear-gradient(to right, #2aa7a5, #0f3d60);
+  }
+
+  /* small teal rectangle */
+  .small-rect {
+    position: absolute;
+    top: 40px;
+    right: -11px;
+    width: 120px;
+    height: 40px;
+    background: #2aa7a5;
+  }
+
+  /* right diagonal shape */
+  .right-shape {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 110px;
+    height: 65%;
+    background: linear-gradient(to bottom right, #2aa7a5, #0f3d60);
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 0 55%);
+  }
+
+  /* bottom bar */
+  .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(to right, #174b63, #2aa7a5, #0f3d60);
+    z-index: 1;
+  }
+
+  /* left triangle */
+  .left-triangle {
+    position: absolute;
+    bottom: 120px;
+    left: 15px;
+    width: 0;
+    height: 0;
+    transform: rotate(-40deg);
+    border-top: 90px solid #2aa7a5;
+    border-right: 80px solid transparent;
+    z-index: 1;
+  }
+}
+
+/* Vivo Devices (Portrait) */
+@media only screen and (max-width: 360px) {
+  .page {
+    width: 97mm;
+    height: 144mm;
+    background: #fff; /* NO BG IMAGE */
+    margin: 20px auto;
+    padding: 50px 70px;
+    position: relative;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  h1 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  .signature {
+    font-size: 28px;
+  }
+
+  /* HEADER SHAPE WRAPPER */
+  .header-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 220px;
+    background: transparent;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  /* top gradient bar */
+  .top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 70px;
+    width: 100%;
+    background: linear-gradient(to right, #2aa7a5, #0f3d60);
+  }
+
+  /* small teal rectangle */
+  .small-rect {
+    position: absolute;
+    top: 70px;
+    right: -11px;
+    width: 120px;
+    height: 44px;
+    background: #2aa7a5;
+  }
+
+  /* right diagonal shape */
+  .right-shape {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 110px;
+    height: 93%;
+    background: linear-gradient(to bottom right, #2aa7a5, #0f3d60);
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 0 55%);
+  }
+
+  /* bottom bar */
+  .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(to right, #174b63, #2aa7a5, #0f3d60);
+    z-index: 1;
+  }
+
+  /* left triangle */
+  .left-triangle {
+    position: absolute;
+    bottom: 120px;
+    left: 15px;
+    width: 0;
+    height: 0;
+    transform: rotate(-40deg);
+    border-top: 90px solid #2aa7a5;
+    border-right: 80px solid transparent;
+    z-index: 1;
+  }
+}
+
+/* Windows (Below 1024px) */
+@media only screen and (max-width: 1024px) and (min-width: 768px) {
+  .page {
+    width: 97mm;
+    height: 144mm;
+    background: #fff; /* NO BG IMAGE */
+    margin: 20px auto;
+    padding: 50px 70px;
+    position: relative;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  h1 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  .signature {
+    font-size: 28px;
+  }
+
+  /* HEADER SHAPE WRAPPER */
+  .header-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 220px;
+    background: transparent;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  /* top gradient bar */
+  .top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 70px;
+    width: 100%;
+    background: linear-gradient(to right, #2aa7a5, #0f3d60);
+  }
+
+  /* small teal rectangle */
+  .small-rect {
+    position: absolute;
+    top: 70px;
+    right: -11px;
+    width: 120px;
+    height: 44px;
+    background: #2aa7a5;
+  }
+
+  /* right diagonal shape */
+  .right-shape {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 110px;
+    height: 93%;
+    background: linear-gradient(to bottom right, #2aa7a5, #0f3d60);
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 0 55%);
+  }
+
+  /* bottom bar */
+  .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(to right, #174b63, #2aa7a5, #0f3d60);
+    z-index: 1;
+  }
+
+  /* left triangle */
+  .left-triangle {
+    position: absolute;
+    bottom: 120px;
+    left: 15px;
+    width: 0;
+    height: 0;
+    transform: rotate(-40deg);
+    border-top: 90px solid #2aa7a5;
+    border-right: 80px solid transparent;
+    z-index: 1;
   }
 }

@@ -6,33 +6,21 @@
   margin: 0;
 }
 
-/* FULL PRINT RULES */
 @media print {
-  html,
-  body {
-    width: 210mm !important;
-    height: 297mm !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
   .toolbar {
     display: none !important;
   }
 
   .page {
-    width: 210mm !important;
-    height: 297mm !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    margin: 0% !important;
+    height: 297mm;
+    width: 210mm;
     box-shadow: none !important;
-    background: #fff !important;
-    overflow: hidden !important;
   }
 
   * {
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 }
 
@@ -220,16 +208,236 @@ p {
   z-index: 2;
 }
 
-/* ----------------------------- */
-/*   MOBILE TWEAKS               */
-/* ----------------------------- */
-@media (max-width: 768px) {
+/* iPhone (Portrait and Landscape) */
+@media only screen and (max-width: 768px) {
+  .page {
+    width: 97mm;
+    height: 144mm;
+    background: #fff;
+    margin: 20px auto;
+    padding: 0;
+    position: relative;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    overflow: hidden;
+  }
   h1 {
     font-size: 24px;
   }
 
   p {
-    font-size: 14px;
+    font-size: 12px;
+  }
+
+  .signature {
+    font-size: 28px;
+  }
+}
+
+/* iPhone SE */
+@media only screen and (max-width: 375px) {
+  .page {
+    width: 97mm;
+    height: 144mm;
+    background: #fff;
+    margin: 20px auto;
+    padding: 0;
+    position: relative;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  h1 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  .signature {
+    font-size: 28px;
+  }
+}
+
+/* iPad */
+@media only screen and (max-width: 1024px) {
+  .page {
+    width: 97mm;
+    height: 144mm;
+    background: #fff;
+    margin: 20px auto;
+    padding: 0;
+    position: relative;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  h1 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  .signature {
+    font-size: 28px;
+  }
+}
+
+/* Laptop (1366px and below) */
+@media only screen and (max-width: 1366px) {
+  .page {
+    width: 97mm;
+    height: 144mm;
+    background: #fff;
+    margin: 20px auto;
+    padding: 0;
+    position: relative;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  h1 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  .signature {
+    font-size: 28px;
+  }
+}
+
+/* Mac (Desktop) */
+@media only screen and (max-width: 1920px) {
+  .page {
+    width: 210mm;
+    height: 297mm;
+    background: #fff;
+    margin: 20px auto;
+    padding: 0;
+    position: relative;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  p {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  /* Signature */
+  .signature {
+    font-size: 34px;
+  }
+}
+
+/* Android Devices (Portrait) */
+@media only screen and (max-width: 480px) {
+  .page {
+    width: 97mm;
+    height: 144mm;
+    background: #fff;
+    margin: 20px auto;
+    padding: 0;
+    position: relative;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  h1 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  .signature {
+    font-size: 28px;
+  }
+}
+
+/* Samsung Devices (Portrait) */
+@media only screen and (max-width: 412px) {
+  .page {
+    width: 97mm;
+    height: 144mm;
+    background: #fff;
+    margin: 20px auto;
+    padding: 0;
+    position: relative;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  h1 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  .signature {
+    font-size: 28px;
+  }
+}
+
+/* Vivo Devices (Portrait) */
+@media only screen and (max-width: 360px) {
+  .page {
+    width: 97mm;
+    height: 144mm;
+    background: #fff;
+    margin: 20px auto;
+    padding: 0;
+    position: relative;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  h1 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  .signature {
+    font-size: 28px;
+  }
+}
+
+/* Windows (Below 1024px) */
+@media only screen and (max-width: 1024px) and (min-width: 768px) {
+  .page {
+    width: 97mm;
+    height: 144mm;
+    background: #fff;
+    margin: 20px auto;
+    padding: 0;
+    position: relative;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  h1 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 12px;
   }
 
   .signature {
