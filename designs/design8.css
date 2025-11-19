@@ -1,15 +1,53 @@
+/* ----------------------------- */
+/*   PAGE SIZE FOR PRINT (A4)    */
+/* ----------------------------- */
 @page {
   size: A4;
   margin: 0;
 }
 
+/* FULL PRINT RULES */
+@media print {
+  html,
+  body {
+    width: 210mm !important;
+    height: 297mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .toolbar {
+    display: none !important;
+  }
+
+  .page {
+    width: 210mm !important;
+    height: 297mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    background: #fff !important;
+    overflow: hidden !important;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+
+/* ----------------------------- */
+/*   GENERAL BODY + FONT         */
+/* ----------------------------- */
 body {
   margin: 0;
   background: #e9ecef;
   font-family: Arial, sans-serif;
 }
 
-/* Toolbar */
+/* ----------------------------- */
+/*   TOOLBAR                     */
+/* ----------------------------- */
 .toolbar {
   background: #fff;
   padding: 10px 20px;
@@ -39,27 +77,29 @@ body {
   background: #000;
 }
 
-/* PAGE (background image removed) */
+/* ----------------------------- */
+/*   PAGE CONTAINER              */
+/* ----------------------------- */
 .page {
   width: 210mm;
   height: 297mm;
-  background: #fff; /* NO BG IMAGE */
+  background: #fff;
   margin: 20px auto;
-  padding: 0px;
+  padding: 0;
   position: relative;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
   overflow: hidden;
 }
+
 .content {
   padding: 50px 70px;
 }
 
-/* -------------------------------------- */
-/*    SHAPES YOU REQUESTED ARE ADDED HERE */
-/* -------------------------------------- */
+/* ----------------------------- */
+/*   HEADER SHAPES               */
+/* ----------------------------- */
 
-/* HEADER SHAPE WRAPPER */
 .header-wrap {
   position: relative;
   width: 100%;
@@ -67,30 +107,24 @@ body {
   overflow: hidden;
 }
 
-/* top gradient bar */
 .top-bar {
   position: absolute;
-  top: 0px;
+  top: 0;
   left: 0;
   width: 100%;
   height: 70px;
   background: #0c517d;
-  /* dark blue */
 }
 
-/* small teal rectangle */
 .small-rect {
   position: absolute;
-  top: 0px;
+  top: 0;
   right: 80px;
-  /* adjust according to placement */
   width: 250px;
   height: 90px;
   background: #1dbaff;
-  /* bright blue */
 }
 
-/* right diagonal shape */
 .right-shape {
   position: absolute;
   bottom: 30px;
@@ -101,6 +135,8 @@ body {
   border-top: 30px solid #0c517dd6;
 }
 
+/* Lower header shapes */
+
 .header-container {
   position: relative;
   width: 100%;
@@ -110,7 +146,6 @@ body {
   top: 195px;
 }
 
-/* bottom dark blue bar */
 .dark-bar {
   position: absolute;
   bottom: 0;
@@ -118,7 +153,6 @@ body {
   width: 100%;
   height: 80px;
   background: #0b5380;
-  /* dark blue */
 }
 
 .blue-triangle {
@@ -142,9 +176,10 @@ body {
   background: #1ebaff;
 }
 
-/* -------------------------------------- */
+/* ----------------------------- */
+/*   EDITABLE TEXT STYLES        */
+/* ----------------------------- */
 
-/* Editable text */
 [contenteditable="true"] {
   outline: 1px dashed transparent;
 }
@@ -176,7 +211,7 @@ p {
   margin-top: 50px;
 }
 
-/* Footer text */
+/* Footer */
 .footer {
   display: flex;
   justify-content: space-between;
@@ -185,28 +220,10 @@ p {
   z-index: 2;
 }
 
-/* Print mode */
-@media print {
-  .toolbar {
-    display: none;
-  }
-
-  .page {
-    margin: 0;
-    box-shadow: none;
-  }
-}
-
-/* Mobile adjustments */
+/* ----------------------------- */
+/*   MOBILE TWEAKS               */
+/* ----------------------------- */
 @media (max-width: 768px) {
-  .page {
-    width: auto;
-    height: auto;
-    /* padding: 20px; */
-    /* margin: 10px auto; */
-    background-size: cover;
-  }
-
   h1 {
     font-size: 24px;
   }
