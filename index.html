@@ -7,14 +7,42 @@
     <title>Letterhead Preview</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
     <style>
+        /* Make scrollbar visible */
+        ::-webkit-scrollbar {
+            width: 5px;
+
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #d0d5da;
+
+            /* darker track */
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #8a8f94;
+            margin: 10px;
+            /* visible thumb */
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6c7075;
+        }
+
         body,
         html {
             height: 100%;
             margin: 0;
-            background: #e9ecef;
             overflow: hidden;
+        }
+
+        body.noscroll {
+            overflow: hidden !important;
+            height: 100%;
         }
 
         /* TOP BAR */
@@ -29,26 +57,32 @@
             z-index: 1003;
             display: flex;
             align-items: center;
+            border-bottom: 2px solid #000;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
         }
 
         .btn-save {
-            background: #28a745;
-            color: #fff;
-            border: none;
+            background: transparent;
+            /* color: #fff; */
             padding: 8px 14px;
-            border-radius: 4px;
+            border: none;
         }
 
         .btn-print {
-            background: #000;
-            color: #fff;
-            border: none;
+            background: transparent;
+            /* color: #fff; */
             padding: 8px 14px;
-            border-radius: 4px;
+            border: none;
         }
 
-        /* SIDEBAR */
+        .btn-slide {
+            background: transparent;
+            /* color: #fff; */
+            padding: 8px 14px;
+            border: none;
+        }
+
+        /* LEFT SIDEBAR */
         .sidebar {
             position: fixed;
             top: 56px;
@@ -59,7 +93,7 @@
             border-right: 1px solid #ddd;
             overflow-y: auto;
             transition: transform 0.3s ease;
-            z-index: 1002;
+            z-index: 1201;
         }
 
         @media (max-width: 768px) {
@@ -84,7 +118,7 @@
 
         .sidebar-item.active {
             background: #eef5ff;
-            border-left: 4px solid #0d6efd;
+            border-left: 4px solid #045227;
         }
 
         .sidebar img {
@@ -92,25 +126,48 @@
             border-radius: 4px;
         }
 
-        /* IFRAME AREA */
-        .preview-area {
-            position: absolute;
-            left: 250px;
+        /* RIGHT SIDEBAR */
+        .right-sidebar {
+            position: fixed;
             top: 56px;
             right: 0;
-            bottom: 0;
+            width: 250px;
+            height: calc(100vh - 56px);
+            background: #f8f9fa;
+            border-left: 1px solid #ddd;
+            overflow-y: auto;
+            transition: transform 0.3s ease;
+            z-index: 1201;
+            transform: translateX(100%);
         }
 
+        .right-sidebar.open {
+            transform: translateX(0);
+        }
+
+        /* PREVIEW */
+        .preview-area {
+            position: absolute;
+            top: 56px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            transition: all 0.3s ease;
+            z-index: 1;
+        }
+
+        /* BLOCK iframe interaction on mobile when sidebar is open */
         @media (max-width: 768px) {
-            .preview-area {
-                left: 0;
+            .preview-area.locked {
+                pointer-events: none;
+                overflow: hidden;
+                touch-action: none;
             }
         }
 
         iframe {
             width: 100%;
             height: 100%;
-            border: none;
         }
 
         /* OVERLAY */
@@ -140,85 +197,169 @@
 
     <!-- TOP BAR -->
     <div class="topbar">
-        <!-- Mobile Toggle + Close (auto switch) -->
-        <button class="btn text-dark border  d-md-none me-3" id="sidebarToggle">☰</button>
-        <button class="btn text-dark border d-md-none me-3" id="sidebarClose" style="display:none;">✕</button>
+
+        <button class="  border-0 d-md-none bg-transparent me-2" id="sidebarToggle">
+            <img width="30" height="30" src="https://img.icons8.com/ios-filled/30/right-squared--v1.png"
+                alt="right-squared--v1" />
+        </button>
+
+        <button class="  border-0 d-md-none bg-transparent me-2" id="sidebarClose" style="display:none;">
+            <img width="30" height="30" src="https://img.icons8.com/ios-filled/30/close-window.png"
+                alt="close-window" />
+        </button>
 
         <h5 class="m-0 flex-grow-1">Letterheads</h5>
-        <button class="btn-save me-2" onclick="saveToIframe()">Save</button>
-        <button class="btn-print" onclick="printIframePage()">Print</button>
+
+        <button class="btn-save " onclick="saveToIframe()">
+            <img width="40" height="40" src="https://img.icons8.com/sf-black-filled/40/save.png" alt="save" />
+        </button>
+
+        <button class="btn-print " onclick="printIframePage()">
+            <img width="35" height="35" src="https://img.icons8.com/glyph-neue/35/print.png" alt="print" />
+        </button>
+
+        <button class="btn-slide " id="rightSidebarToggleAll">
+            <img width="35" height="35" src="https://img.icons8.com/sf-black-filled/35/create-new.png"
+                alt="create-new" />
+        </button>
+
     </div>
 
-    <!-- OVERLAY -->
     <div id="overlay"></div>
 
-    <!-- SIDEBAR -->
+    <!-- LEFT SIDEBAR -->
     <div class="sidebar p-0" id="sidebar">
-
-
-
         <div class="sidebar-item" onclick="changeDesign('designs/design1.css', this)">
             <p>LetterHead 1</p>
             <img src="Image/Screenshot (106).png">
         </div>
-
         <div class="sidebar-item" onclick="changeDesign('designs/design2.css', this)">
             <p>LetterHead 2</p>
             <img src="Image/Screenshot (107).png">
         </div>
-
         <div class="sidebar-item" onclick="changeDesign('designs/design3.css', this)">
             <p>LetterHead 3</p>
             <img src="Image/Screenshot (108).png">
         </div>
-
         <div class="sidebar-item" onclick="changeDesign('designs/design4.css', this)">
             <p>LetterHead 4</p>
             <img src="Image/Screenshot (109).png">
         </div>
-
         <div class="sidebar-item" onclick="changeDesign('designs/design5.css', this)">
             <p>LetterHead 5</p>
             <img src="Image/Screenshot (110).png">
         </div>
-
         <div class="sidebar-item" onclick="changeDesign('designs/design6.css', this)">
             <p>LetterHead 6</p>
             <img src="Image/Screenshot (111).png">
         </div>
     </div>
 
+    <!-- RIGHT SIDEBAR -->
+    <div class="right-sidebar p-0" id="rightSidebar">
+
+        <!-- Logo Upload -->
+        <!-- <div class="right-sidebar-item">
+            <label for="logoUpload">Upload your logo:</label>
+            <input type="file" id="logoUpload" accept="image/*">
+        </div> -->
+
+
+        <div class="right-sidebar-item">Item 1</div>
+        <div class="right-sidebar-item">Item 2</div>
+        <div class="right-sidebar-item">Item 3</div>
+    </div>
+
+
     <!-- PREVIEW -->
-    <div class="preview-area">
+    <div class="preview-area" id="previewArea">
+        <!-- <input type="file" id="logoUpload"> -->
         <iframe id="previewFrame" src="LetterheadContent.html"></iframe>
+
     </div>
 
     <script>
         const sidebar = document.getElementById("sidebar");
-        const overlay = document.getElementById("overlay");
         const sidebarToggle = document.getElementById("sidebarToggle");
         const sidebarClose = document.getElementById("sidebarClose");
 
-        // OPEN SIDEBAR
-        sidebarToggle.onclick = () => {
-            sidebar.classList.add("open");
-            overlay.classList.add("show");
+        const rightSidebar = document.getElementById("rightSidebar");
+        const rightSidebarToggleAll = document.getElementById("rightSidebarToggleAll");
 
-            sidebarToggle.style.display = "none";     // hide ☰
-            sidebarClose.style.display = "block";     // show X
-        };
+        const overlay = document.getElementById("overlay");
+        const preview = document.getElementById("previewArea");
 
-        // CLOSE SIDEBAR
-        function hideSidebar() {
-            sidebar.classList.remove("open");
-            overlay.classList.remove("show");
-
-            sidebarClose.style.display = "none";      // hide X
-            sidebarToggle.style.display = "block";    // show ☰
+        function lockScroll() {
+            document.body.classList.add("noscroll");
+            preview.classList.add("locked");
         }
 
-        sidebarClose.onclick = hideSidebar;
-        overlay.onclick = hideSidebar;
+        function unlockScroll() {
+            document.body.classList.remove("noscroll");
+            preview.classList.remove("locked");
+        }
+
+        /* LEFT SIDEBAR OPEN */
+        sidebarToggle.onclick = () => {
+            sidebar.classList.add("open");
+            rightSidebar.classList.remove("open");
+
+            overlay.classList.add("show");
+            lockScroll();
+
+            sidebarToggle.style.display = "none";
+            sidebarClose.style.display = "block";
+        };
+
+        function hideSidebar() {
+            sidebar.classList.remove("open");
+            sidebarToggle.style.display = "block";
+            sidebarClose.style.display = "none";
+        }
+
+        sidebarClose.onclick = () => {
+            hideSidebar();
+            overlay.classList.remove("show");
+            unlockScroll();
+        };
+
+        /* RIGHT SIDEBAR */
+        rightSidebarToggleAll.onclick = () => {
+            hideSidebar();
+
+            if (rightSidebar.classList.contains("open")) {
+                rightSidebar.classList.remove("open");
+                overlay.classList.remove("show");
+                unlockScroll();
+            } else {
+                rightSidebar.classList.add("open");
+                overlay.classList.add("show");
+                lockScroll();
+            }
+        };
+
+        overlay.onclick = () => {
+            hideSidebar();
+            rightSidebar.classList.remove("open");
+
+            overlay.classList.remove("show");
+            unlockScroll();
+        };
+
+        /* CHANGE DESIGN */
+        function changeDesign(cssFile, element) {
+            const frame = document.getElementById("previewFrame");
+            frame.contentWindow.document.getElementById("design-style").href = cssFile;
+
+            document.querySelectorAll(".sidebar-item").forEach(i => i.classList.remove("active"));
+            element.classList.add("active");
+
+            hideSidebar();
+            rightSidebar.classList.remove("open");
+
+            overlay.classList.remove("show");
+            unlockScroll();
+        }
 
         function saveToIframe() {
             const frame = document.getElementById("previewFrame");
@@ -230,15 +371,23 @@
             frame.contentWindow.print();
         }
 
-        function changeDesign(cssFile, element) {
-            const frame = document.getElementById("previewFrame");
-            frame.contentWindow.document.getElementById("design-style").href = cssFile;
+        // document.getElementById("logoUpload").addEventListener("change", function (event) {
+        //     const file = event.target.files[0];
+        //     if (!file) return;
 
-            document.querySelectorAll(".sidebar-item").forEach(item => item.classList.remove("active"));
-            element.classList.add("active");
+        //     const reader = new FileReader();
+        //     reader.onload = function (e) {
+        //         const frame = document.getElementById("previewFrame").contentWindow.document;
 
-            if (window.innerWidth < 768) hideSidebar();
-        }
+        //         // Replace the logo inside iframe
+        //         const logoImg = frame.getElementById("logo");
+        //         if (logoImg) {
+        //             logoImg.src = e.target.result;
+        //         }
+        //     };
+
+        //     reader.readAsDataURL(file);
+        // });
     </script>
 
 </body>

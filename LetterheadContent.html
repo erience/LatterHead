@@ -8,12 +8,14 @@
 
     <!-- Load external CSS -->
     <link id="design-style" rel="stylesheet" href="designs/design1.css">
+    <style>
 
+    </style>
 </head>
 
 <body>
 
-    
+
 
     <!-- PAGE -->
     <div class="page">
@@ -24,12 +26,21 @@
         </div>
 
         <div class="content">
-            <!-- Heading -->
 
-            <div class="heading">
-                <h1 contenteditable="true" id="name">Andrew Wilson</h1>
-                <p contenteditable="true" class="role" id="role">Senior Executive</p>
+            <div class="header-div">
+                <!-- Heading -->
+                <div class="heading-section">
+                    <h1 contenteditable="true" id="name">Andrew Wilson</h1>
+                    <p contenteditable="true" class="role" id="role">Senior Executive</p>
+                </div>
+
+                <div class="logo-wrapper">
+                    <img class="logo-img" id="logo" src="Image/Logo.png" />
+                    <input type="file" id="logoInput" accept="image/*">
+                </div>
             </div>
+
+
             <div class="left-triangle"></div>
 
             <!-- Content -->
@@ -75,7 +86,7 @@
 
     <script>
         const ids = [
-            "name", "role", "p1", "p2", "p3", "p4", "p5",
+            "name", "role", "logo", "p1", "p2", "p3", "p4", "p5",
             "signature", "sign_name", "sign_title",
             "foot1", "foot2", "foot3", "foot4"
         ];
@@ -89,7 +100,27 @@
             });
             alert("Saved!");
         }
+
+        const input = document.getElementById("logoInput");
+        const logo = document.getElementById("logo");
+
+        // Clicking the logo opens upload window
+        logo.addEventListener("click", () => input.click());
+
+        // When a file is selected, replace the logo
+        input.addEventListener("change", function (event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                logo.src = e.target.result;
+            };
+
+            reader.readAsDataURL(file);
+        });
     </script>
+
 
 </body>
 

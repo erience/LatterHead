@@ -4,6 +4,9 @@
 }
 
 @media print {
+  #logoInput {
+    display: none !important;
+  }
   .toolbar {
     display: none !important;
   }
@@ -20,40 +23,42 @@
     print-color-adjust: exact;
   }
 }
+#logoInput {
+  display: none;
+}
+#logo {
+  cursor: pointer;
+}
+.logo-img {
+  width: 10%;
+}
+
+/* Make scrollbar visible */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #d0d5da;
+
+  /* darker track */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8a8f94;
+  margin: 10px;
+  /* visible thumb */
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6c7075;
+}
+
 body {
   margin: 0;
   background: #e9ecef;
   font-family: Arial, sans-serif;
-}
-
-/* Toolbar */
-.toolbar {
-  background: #fff;
-  padding: 10px 20px;
-  position: sticky;
-  top: 0;
-  z-index: 999;
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-}
-
-.toolbar button {
-  padding: 8px 15px;
-  border: none;
-  border-radius: 4px;
-  color: #fff;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.btn-save {
-  background: #28a745;
-}
-
-.btn-print {
-  background: #000;
 }
 
 /* Page */
@@ -117,7 +122,7 @@ p {
     background: url("/Image/blob-2.svg") no-repeat;
     background-size: 24rem;
     background-position: top center;
-    margin: 5px 5px;
+    margin: 5px auto;
     padding: 10px;
     position: relative;
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
@@ -144,7 +149,7 @@ p {
     background: url("/Image/blob-2.svg") no-repeat;
     background-size: 24rem;
     background-position: top center;
-    margin: 5px 5px;
+    margin: 5px auto;
     padding: 10px;
     position: relative;
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
@@ -171,7 +176,7 @@ p {
     background: url("/Image/blob-2.svg") no-repeat;
     background-size: 24rem;
     background-position: top center;
-    margin: 5px 5px;
+    margin: 5px auto;
     padding: 10px;
     position: relative;
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
@@ -198,7 +203,7 @@ p {
     background: url("/Image/blob-2.svg") no-repeat;
     background-size: 24rem;
     background-position: top center;
-    margin: 5px 5px;
+    margin: 5px auto;
     padding: 10px;
     position: relative;
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
@@ -255,7 +260,7 @@ p {
     background: url("/Image/blob-2.svg") no-repeat;
     background-size: 24rem;
     background-position: top center;
-    margin: 5px 5px;
+    margin: 5px auto;
     padding: 10px;
     position: relative;
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
@@ -282,7 +287,7 @@ p {
     background: url("/Image/blob-2.svg") no-repeat;
     background-size: 24rem;
     background-position: top center;
-    margin: 5px 5px;
+    margin: 5px auto;
     padding: 10px;
     position: relative;
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
@@ -309,7 +314,7 @@ p {
     background: url("/Image/blob-2.svg") no-repeat;
     background-size: 24rem;
     background-position: top center;
-    margin: 5px 5px;
+    margin: 5px auto;
     padding: 10px;
     position: relative;
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
@@ -336,7 +341,7 @@ p {
     background: url("/Image/blob-2.svg") no-repeat;
     background-size: 24rem;
     background-position: top center;
-    margin: 5px 5px;
+    margin: 5px auto;
     padding: 10px;
     position: relative;
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);

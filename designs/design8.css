@@ -7,6 +7,9 @@
 }
 
 @media print {
+  #logoInput {
+    display: none !important;
+  }
   .toolbar {
     display: none !important;
   }
@@ -22,6 +25,37 @@
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
+}
+#logoInput {
+  display: none;
+}
+#logo {
+  cursor: pointer;
+}
+.logo-img {
+  width: 10%;
+}
+
+/* Make scrollbar visible */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #d0d5da;
+
+  /* darker track */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8a8f94;
+  margin: 10px;
+  /* visible thumb */
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6c7075;
 }
 
 /* ----------------------------- */

@@ -38,6 +38,109 @@
         </div>
     </div>
 </body>
+<script>
+        const sidebar = document.getElementById("sidebar");
+        const sidebarToggle = document.getElementById("sidebarToggle");
+        const sidebarClose = document.getElementById("sidebarClose");
 
+        const rightSidebar = document.getElementById("rightSidebar");
+        const rightSidebarToggleAll = document.getElementById("rightSidebarToggleAll");
+
+        const overlay = document.getElementById("overlay");
+        const preview = document.querySelector(".preview-area");
+
+        /* UPDATE PREVIEW SPACE */
+        function updatePreview() {
+            preview.classList.remove("preview-left-open", "preview-right-open", "preview-both-open");
+
+            const leftOpen = sidebar.classList.contains("open");
+            const rightOpen = rightSidebar.classList.contains("open");
+
+            if (leftOpen && rightOpen) {
+                preview.classList.add("preview-both-open");
+            } else if (leftOpen) {
+                preview.classList.add("preview-left-open");
+            } else if (rightOpen) {
+                preview.classList.add("preview-right-open");
+            }
+        }
+
+        /* LEFT SIDEBAR */
+        sidebarToggle.onclick = () => {
+            sidebar.classList.add("open");
+            overlay.classList.add("show");
+
+            sidebarToggle.style.display = "none";
+            sidebarClose.style.display = "block";
+
+            rightSidebar.classList.remove("open");
+
+            updatePreview();
+        };
+
+        function hideSidebar() {
+            sidebar.classList.remove("open");
+            sidebarToggle.style.display = "block";
+            sidebarClose.style.display = "none";
+        }
+
+        sidebarClose.onclick = () => {
+            hideSidebar();
+            overlay.classList.remove("show");
+            updatePreview();
+        };
+
+        /* RIGHT SIDEBAR */
+        rightSidebarToggleAll.onclick = () => {
+
+            hideSidebar();
+
+            if (rightSidebar.classList.contains("open")) {
+                rightSidebar.classList.remove("open");
+                overlay.classList.remove("show");
+            } else {
+                rightSidebar.classList.add("open");
+                overlay.classList.add("show");
+            }
+
+            updatePreview();
+        };
+
+        /* OVERLAY CLOSES EVERYTHING */
+        overlay.onclick = () => {
+            hideSidebar();
+            rightSidebar.classList.remove("open");
+            overlay.classList.remove("show");
+
+            updatePreview();
+        };
+
+        /* CHANGE DESIGN */
+        function changeDesign(cssFile, element) {
+            const frame = document.getElementById("previewFrame");
+            frame.contentWindow.document.getElementById("design-style").href = cssFile;
+
+            document.querySelectorAll(".sidebar-item").forEach(item =>
+                item.classList.remove("active")
+            );
+            element.classList.add("active");
+
+            overlay.classList.remove("show");
+            rightSidebar.classList.remove("open");
+
+            updatePreview();
+        }
+
+        /* SAVE + PRINT */
+        function saveToIframe() {
+            const frame = document.getElementById("previewFrame");
+            if (frame.contentWindow.saveData) frame.contentWindow.saveData();
+        }
+
+        function printIframePage() {
+            const frame = document.getElementById("previewFrame");
+            frame.contentWindow.print();
+        }
+    </script>
 
 </html>
